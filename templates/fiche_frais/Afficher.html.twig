@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block title %}
+Formulaire de connexion
+{% endblock %}
+
+{% block body %}
+    <center>
+        <div class="container">
+            <h3>Liste des fiches de frais</h3><br/>
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>idVisiteur</th>
+                    <th>mois</th>
+                    <th>nombre de justificatifs</th>
+                    <th>montant valide</th>
+                    <th>date de modification</th>
+                    <!--<th>Modifier</th>
+                    <th>Supprimer</th>-->
+                </tr>
+                {% for uneFiche in Fiche %}
+                    <tr>
+                        <td>{{ uneFiche.id }}</td>
+                        <td>{{ uneFiche.id_visiteur_id }}</td>
+                        <td>{{ uneFiche.mois }} €</td>
+                        <td>{{ uneFiche.nbJustificatifs }}</td>
+                        <td>{{ uneFiche.montantValide }}</td>
+                        <td>{{ uneFiche.dateModif }}</td>
+                        <!--<td><a href="/article/update/{/{ unArticle.id }}" class="btn btn-outline-primary">MODIFIER</a></td>
+                        <td><a href="/article/verif/supprimer/{/{ unArticle.id }}" class="btn btn-outline-danger">SUPPRIMER</a></td>-->
+                    </tr>
+                {% endfor %}
+            </table><br/>
+           
+        </div>
+    </center>
+
+{% endblock %}
