@@ -54,7 +54,7 @@ class Comptable
     private $dateEmbauche;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\FicheFrais", mappedBy="idVisiteur")
+     * @ORM\OneToMany(targetEntity="App\Entity\FicheFrais", mappedBy="idComptable")
      */
     private $FicheFrais;
 

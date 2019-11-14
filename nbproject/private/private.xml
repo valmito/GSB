@@ -3,12 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/GSB_Frais/src/Controller/FicheFraisController.php</file>
-            <file>file:/var/www/html/GSB_Frais/src/Entity/FicheFrais.php</file>
-            <file>file:/var/www/html/GSB_Frais/templates/base.html.twig</file>
-            <file>file:/var/www/html/GSB_Frais/src/Entity/Etat.php</file>
+            <file>file:/var/www/html/GSB_Frais/src/Controller/VisiteurController.php</file>
+            <file>file:/var/www/html/GSB_Frais/src/Form/FicheFraisType.php</file>
+            <file>file:/var/www/html/GSB_Frais/templates/user/Connexion.html.twig</file>
             <file>file:/var/www/html/GSB_Frais/src/Entity/Comptable.php</file>
             <file>file:/var/www/html/GSB_Frais/src/Controller/ComptableController.php</file>
+            <file>file:/var/www/html/GSB_Frais/public/css/Css.css</file>
+            <file>file:/var/www/html/GSB_Frais/src/Controller/UserController.php</file>
+            <file>file:/var/www/html/GSB_Frais/src/Controller/FicheFraisController.php</file>
+            <file>file:/var/www/html/GSB_Frais/templates/fiche_frais/Creer.html.twig</file>
+            <file>file:/var/www/html/GSB_Frais/src/Repository/FicheFraisRepository.php</file>
+            <file>file:/var/www/html/GSB_Frais/src/Entity/FicheFrais.php</file>
+            <file>file:/var/www/html/GSB_Frais/templates/base.html.twig</file>
+            <file>file:/var/www/html/GSB_Frais/templates/Accueil.html.twig</file>
+            <file>file:/var/www/html/GSB_Frais/src/Form/VisiteurType.php</file>
             <file>file:/var/www/html/GSB_Frais/templates/fiche_frais/Afficher.html.twig</file>
         </group>
     </open-files>

@@ -18,13 +18,12 @@ class FicheFrais
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\comptable", inversedBy="FicheFrais")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Comptable")
      */
-    private $idVisiteur;
+    private $idComptable;
 
     /**
-     * @ORM\Column(type="string", length=6)
+     * @ORM\Column(type="integer")
      */
     private $mois;
 
@@ -43,19 +42,29 @@ class FicheFrais
      */
     private $dateModif;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Visiteur", inversedBy="ficheFrais")
+     */
+    private $idVisiteur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\etat", inversedBy="ficheFrais")
+     */
+    private $situation;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdVisiteur(): ?comptable
+    public function getIdComptable(): ?comptable
     {
-        return $this->idVisiteur;
+        return $this->idComptable;
     }
 
-    public function setIdVisiteur(?comptable $idVisiteur): self
+    public function setIdComptable(?comptable $idVisiteur): self
     {
-        $this->idVisiteur = $idVisiteur;
+        $this->idComptable = $idVisiteur;
 
         return $this;
     }
@@ -104,6 +113,30 @@ class FicheFrais
     public function setDateModif(\DateTimeInterface $dateModif): self
     {
         $this->dateModif = $dateModif;
+
+        return $this;
+    }
+
+    public function getIdVisiteur(): ?Visiteur
+    {
+        return $this->idVisiteur;
+    }
+
+    public function setIdVisiteur(?Visiteur $idVisiteur): self
+    {
+        $this->idVisiteur = $idVisiteur;
+
+        return $this;
+    }
+
+    public function getSituation(): ?etat
+    {
+        return $this->situation;
+    }
+
+    public function setLibEtat(?etat $situation): self
+    {
+        $this->situation = $situation;
 
         return $this;
     }

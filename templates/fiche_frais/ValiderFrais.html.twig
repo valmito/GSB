@@ -1,0 +1,166 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<div id="Validation">
+<h1>Validation des frais par visiteur</h1>
+<p>
+    <div class="form-group">
+        {{  form_label(form.idVisiteur, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        {{  form_errors(form.idVisiteur) }}
+        {{  form_widget(form.idVisiteur) }}
+    </div>
+</p>
+<p>
+    <div class="form-group">
+        {{  form_label(form.mois, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        {{  form_errors(form.mois) }}
+        {{  form_widget(form.mois) }}
+    </div>
+</p>
+<h3>
+    Frais au forfait
+</h3>
+<table>
+    <tr>
+        <td>Repas midi</td>
+        <td>Nuitée</td>
+        <td>Etape</td>
+        <td>Km</td>
+        <td>Situation</td>
+    </tr>
+    <tr>
+        <td>
+            <!--
+            <div class="form-group">
+            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            { form_errors(form.idComptable) }}
+            { form_widget(form.idComptable) }}
+            </div>
+            -->
+        </td>
+        <td>
+            <!--
+            <div class="form-group">
+            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            { form_errors(form.idComptable) }}
+            { form_widget(form.idComptable) }}
+            </div>
+            -->
+        </td>
+        <td>
+            <!--
+            <div class="form-group">
+            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            { form_errors(form.idComptable) }}
+            { form_widget(form.idComptable) }}
+            </div>
+            -->
+        </td>
+        <td>
+            <!--
+            <div class="form-group">
+            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            { form_errors(form.idComptable) }}
+            { form_widget(form.idComptable) }}
+            </div>
+            -->
+        </td>
+        <td>
+            <div class="form-group">
+            {{ form_errors(form.situation) }}
+            {{ form_widget(form.situation) }}
+            </div>
+        </td>
+    </tr>
+</table>
+<h3>
+    Hors Forfait
+</h3>
+<table>
+    <tr>
+        <td>Date</td>
+        <td>Libellé</td>
+        <td>Montant</td>
+        <td>Situation</td>
+    </tr>
+    <tr>
+        <td>
+            <!--
+            <div class="form-group">
+            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            { form_errors(form.idComptable) }}
+            { form_widget(form.idComptable) }}
+            </div>
+            -->
+        </td>
+        <td>
+            <!--
+            <div class="form-group">
+            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            { form_errors(form.idComptable) }}
+            { form_widget(form.idComptable) }}
+            </div>
+            -->
+        </td>
+        <td>
+            <!--
+            <div class="form-group">
+            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            { form_errors(form.idComptable) }}
+            { form_widget(form.idComptable) }}
+            </div>
+            -->
+        </td>
+        <td>
+            <div class="form-group">
+            {{ form_errors(form.situation) }}
+            {{ form_widget(form.situation) }}
+            </div>
+        </td>
+    </tr>
+</table>
+<h3>
+    Hors Classification
+</h3>
+<table>
+    <tr>
+        <td>Nb justificatifs</td>
+        <td>Montant</td>
+        <td>Situation</td>
+    </tr>
+    <tr>
+        <td>
+            <!--
+            <div class="form-group">
+            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            { form_errors(form.idComptable) }}
+            { form_widget(form.idComptable) }}
+            </div>
+            -->
+        </td>
+        <td>
+            <!--
+            <div class="form-group">
+            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            { form_errors(form.idComptable) }}
+            { form_widget(form.idComptable) }}
+            </div>
+            -->
+        </td>
+        <td>
+            <div class="form-group">
+            {{ form_errors(form.situation) }}
+            {{ form_widget(form.situation) }}
+            </div>
+        </td>
+    </tr>
+</table>
+<div class="row">
+    <div class="container">
+        <div class="col-md-4">
+            {{ form_widget(form.valider, {'attr': {'class': 'btn btn-success'}}) }}
+            {{ form_widget(form.annuler, {'attr': {'class': 'btn btn-success'}}) }}
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

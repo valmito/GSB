@@ -1,1 +1,71 @@
-{# empty Twig template #}
+{% extends "base.html.twig" %}
+{% block title %}
+Renseigner ma fiche de frais
+{% endblock %}
+{% block body %}
+<center>
+<div class="well">
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+{# Les erreurs générales du formulaire. #}
+{{ form_errors(form) }}
+<h3><center>Formulaire Ajouter Fiche Frais</center></h3>
+<div class="well">
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+{# Les erreurs générales du formulaire. #}
+{{ form_errors(form) }}
+<div class="form-group">
+{# Génération du label. #}
+{{ form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{# Affichage des erreurs pour ce champ précis. #}
+{{ form_errors(form.idComptable) }}
+{{ form_widget(form.idComptable) }}
+<div class="form-group">
+{# Génération du label. #}
+{{ form_label(form.mois, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{# Affichage des erreurs pour ce champ précis. #}
+{{ form_errors(form.mois) }}
+{{ form_widget(form.mois) }}
+<div class="form-group">
+{# Génération du label. #}
+{{ form_label(form.nbJustificatifs, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{# Affichage des erreurs pour ce champ précis. #}
+{{ form_errors(form.nbJustificatifs) }}
+{{ form_widget(form.nbJustificatifs) }}
+<div class="form-group">
+{# Génération du label. #}
+{{ form_label(form.montantValide, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{# Affichage des erreurs pour ce champ précis. #}
+{{ form_errors(form.montantValide) }}
+{{ form_widget(form.montantValide) }}
+<div class="form-group">
+{# Génération du label. #}
+{{ form_label(form.dateModif, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{# Affichage des erreurs pour ce champ précis. #}
+{{ form_errors(form.dateModif) }}
+{{ form_widget(form.dateModif) }}
+
+{# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+    <div class="row">
+        <div class="container">
+        <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+            {{ form_widget(form.valider, {'attr': {'class': 'btn btn-success'}}) }}
+            {{ form_widget(form.annuler, {'attr': {'class': 'btn btn-success'}}) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% if app.session.flashBag.has('success') %}
+<div class="alert alert-success">
+{% for msg in app.session.flashBag.get('success') %}
+{{ msg }}
+{% endfor %}
+</div>
+{% endif %}
+
+{{ form_rest(form) }}
+{# Fermeture de la balise <form> du formulaire HTML #}
+{{ form_end(form) }}
+</div>{# empty Twig template #}
+</center>
+{% endblock %}

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,6 +32,46 @@ class Visiteur
      * @ORM\Column(type="string", length=25)
      */
     private $type;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\FicheFrais", mappedBy="idVisiteur")
+     */
+    private $ficheFrais;
+
+    /**
+     * @ORM\Column(type="string", length=5)
+     */
+    private $cp;
+
+    /**
+     * @ORM\Column(type="string", length=30)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dateEmbauche;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $adresse;
+
+    /**
+     * @ORM\Column(type="string", length=30)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=30)
+     */
+    private $prenom;
+
+    public function __construct()
+    {
+        $this->ficheFrais = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -68,6 +110,111 @@ class Visiteur
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+    public function __get($property){
+    }
+
+    /**
+     * @return Collection|FicheFrais[]
+     */
+    public function getFicheFrais(): Collection
+    {
+        return $this->ficheFrais;
+    }
+
+    public function addFicheFrai(FicheFrais $ficheFrai): self
+    {
+        if (!$this->ficheFrais->contains($ficheFrai)) {
+            $this->ficheFrais[] = $ficheFrai;
+            $ficheFrai->setIdVisiteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFicheFrai(FicheFrais $ficheFrai): self
+    {
+        if ($this->ficheFrais->contains($ficheFrai)) {
+            $this->ficheFrais->removeElement($ficheFrai);
+            // set the owning side to null (unless already changed)
+            if ($ficheFrai->getIdVisiteur() === $this) {
+                $ficheFrai->setIdVisiteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCp(): ?string
+    {
+        return $this->cp;
+    }
+
+    public function setCp(string $cp): self
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getDateEmbauche(): ?\DateTimeInterface
+    {
+        return $this->dateEmbauche;
+    }
+
+    public function setDateEmbauche(\DateTimeInterface $dateEmbauche): self
+    {
+        $this->dateEmbauche = $dateEmbauche;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
 
         return $this;
     }

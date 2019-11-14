@@ -97,7 +97,7 @@ class __TwigTemplate_9b8b928e11ab40be039851d4bd3502f10553a317992664d2edb00d7a6be
         // line 10
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 10, $this->source); })()), 'errors');
         echo "
-<h3><center>Formulaire de connexion</center></h3>
+<h3><center>COMPTABLE<br>Formulaire de connexion</center></h3>
 <div class=\"well\">
 ";
         // line 13
@@ -224,7 +224,7 @@ Formulaire de connexion
 {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 {# Les erreurs générales du formulaire. #}
 {{ form_errors(form) }}
-<h3><center>Formulaire de connexion</center></h3>
+<h3><center>COMPTABLE<br>Formulaire de connexion</center></h3>
 <div class=\"well\">
 {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 {# Les erreurs générales du formulaire. #}

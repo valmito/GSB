@@ -47,4 +47,17 @@ class VisiteurRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function SeConnecter($login, $password) {
+            $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('c')
+            ->from($this->_entityName, 'c')
+            ->where('c.login = :login')
+            ->andWhere('c.mdp = :mdp')
+            ->setParameter('login',$login)
+            ->setParameter('mdp', $password);
+
+           $result =  $queryBuilder->getQuery()->getResult();
+
+        return $result;
+    }
 }

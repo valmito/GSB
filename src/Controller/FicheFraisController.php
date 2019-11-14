@@ -7,7 +7,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Doctrine\ORM\Query\AST\Join;
 use App\Entity\FicheFrais;
+use App\Entity\Comptable;
+use App\Form\FicheFraisType;
 
 class FicheFraisController extends AbstractController{
     /**
@@ -20,19 +23,81 @@ class FicheFraisController extends AbstractController{
         ]);
     }
     /**
-      * @Route("fiche/frais/afficher", name="afficherFicheFrais")
+     * @Route("/fiche/frais/creerFiche", name="creerFicheFrais")
+     */
+    public function creerFiche(Request $query) {
+
+        $FicheFrais = new FicheFrais();
+
+        $form = $this->createForm(FicheFraisType::class, $FicheFrais);
+
+        $form->handleRequest($query);
+          // On fait le lien Requête <-> Formulaire
+          // À partir de maintenant, la variable $article contient les valeurs entrées dans le formulaire
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+          // On vérifie que les valeurs entrées sont correctes (Nous verrons la validation des objets en détail dans le prochain chapitre)
+
+          // On enregistre notre objet $advert dans la base de données, par exemple
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($FicheFrais);
+            $em->flush();    
+
+            $query->getSession()
+                  ->getFlashBag()
+                  ->add('success','Fiche ajouté avec succès');
+
+            return $this->redirectToRoute('creerFicheFrais');
+        }
+         return $this->render('fiche_frais/Creer.html.twig',array('form'=>$form->createView()));    
+    }
+    /**
+     * @Route("/fiche/frais/valider", name="validerFicheFrais")
+     */
+    public function validerFiche(Request $query) {
+
+        $FicheFrais = new FicheFrais();
+
+        $form = $this->createForm(FicheFraisType::class, $FicheFrais);
+
+        $form->handleRequest($query);
+          // On fait le lien Requête <-> Formulaire
+          // À partir de maintenant, la variable $article contient les valeurs entrées dans le formulaire
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+          // On vérifie que les valeurs entrées sont correctes (Nous verrons la validation des objets en détail dans le prochain chapitre)
+
+          // On enregistre notre objet $advert dans la base de données, par exemple
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($FicheFrais);
+            $em->flush();    
+
+            $query->getSession()
+                  ->getFlashBag()
+                  ->add('success','Fiche validé avec succès');
+
+            return $this->redirectToRoute('validerFicheFrais');
+        }
+         return $this->render('fiche_frais/ValiderFrais.html.twig',array('form'=>$form->createView()));    
+    }
+    /**
+      * @Route("/fiche/frais/afficher", name="afficherFicheFrais")
       */
      
-    public function AfficherFicheFrais(Request $request){
+    public function AfficherFicheFrais(){
         
         $em = $this->getDoctrine()->getManager();
-        $Fiche = $em->getRepository(FicheFrais::class)->findAllFicheFrais();    
-        return $this->render('FicheFrais/Afficher.html.twig',array('result'=>$Fiche));
+        $Fiche = $em->getRepository(FicheFrais::class)->findAll();    
+        return $this->render('fiche_frais/Afficher.html.twig',array('Fiche'=>$Fiche));
     }
      
      /**
       *
-      *@Route("/article/update/{id}",name="upd_route")
+      *@Route("/fiche/frais/update/{id}",name="upd_route")
       *
       */    
      public function updateAction(Request $request, Session $session, $id){
@@ -69,7 +134,7 @@ class FicheFraisController extends AbstractController{
 
     /**
       *
-      *@Route("/article/verif/supprimer/{id}",name="verif_del_art")
+      *@Route("/fiche/frais/verif/supprimer/{id}",name="verif_del_art")
       *
       */
    

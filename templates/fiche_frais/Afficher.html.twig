@@ -5,30 +5,31 @@ Formulaire de connexion
 
 {% block body %}
     <center>
-        <div class="container">
+        <div>
             <h3>Liste des fiches de frais</h3><br/>
             <table>
                 <tr>
                     <th>id</th>
-                    <th>idVisiteur</th>
+                    <th>idcomptable</th>
                     <th>mois</th>
                     <th>nombre de justificatifs</th>
                     <th>montant valide</th>
                     <th>date de modification</th>
+                    <th colspan="2">
                     <!--<th>Modifier</th>
                     <th>Supprimer</th>-->
                 </tr>
                 {% for uneFiche in Fiche %}
-                    <tr>
-                        <td>{{ uneFiche.id }}</td>
-                        <td>{{ uneFiche.id_visiteur_id }}</td>
-                        <td>{{ uneFiche.mois }} €</td>
-                        <td>{{ uneFiche.nbJustificatifs }}</td>
-                        <td>{{ uneFiche.montantValide }}</td>
-                        <td>{{ uneFiche.dateModif }}</td>
-                        <!--<td><a href="/article/update/{/{ unArticle.id }}" class="btn btn-outline-primary">MODIFIER</a></td>
-                        <td><a href="/article/verif/supprimer/{/{ unArticle.id }}" class="btn btn-outline-danger">SUPPRIMER</a></td>-->
-                    </tr>
+                <tr>
+                    <td>{{ uneFiche.id }}</td>
+                    <td><!--{ uneFiche.idComptable }}-->String non reconnu</td>
+                    <td>{{ uneFiche.mois }} €</td>
+                    <td>{{ uneFiche.nbJustificatifs }}</td>
+                    <td>{{ uneFiche.montantValide }}</td>
+                    <td><!--{ uneFiche.dateModif }}-->String non reconnu</td>
+                    <td><a href="/fiche/frais/update/{/{ uneFiche.id }}" class="btn btn-outline-primary">MODIFIER</a></td>
+                    <td><a href="/fiche/frais/verif/supprimer/{/{ uneFiche.id }}" class="btn btn-outline-danger">SUPPRIMER</a></td>
+                </tr>
                 {% endfor %}
             </table><br/>
            

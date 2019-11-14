@@ -2,17 +2,17 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
-use App\Entity\Comptable;
 use App\Controller\FicheFraisController;
 use App\Form\ComptableType;
+use App\Entity\Comptable;
 
-class ComptableController extends AbstractController
-{
+class ComptableController extends AbstractController{
     /**
      * @Route("/comptable", name="comptable")
      */
@@ -42,21 +42,25 @@ class ComptableController extends AbstractController
 
           // On vérifie que les valeurs entrées sont correctes (Nous verrons la validation des objets en détail dans le prochain chapitre)
             // On enregistre notre objet $advert dans la base de données, par exemple
-                $em = $this->getDoctrine()->getManager();
-                $data = $form->getData();      
+            $em = $this->getDoctrine()->getManager();
+            $data = $form->getData();      
 
-                $login = $form['login']->getData();
-                $password = $form['mdp']->getData();
+            $login = $form['login']->getData();
+            $password = $form['mdp']->getData();
 
-                $result = $em->getRepository(comptable::class)->seConnecter($login,$password); //on envoie les données reçus pour tester
-
-                if(!empty($result)){ //on teste si le user existe ou pas !!
+            $compta = $em->getRepository(comptable::class)->seConnecter($login,$password); //on envoie les données reçus pour tester
+            foreach($compta as $result){
+                if($compta[0]->getLogin()==$login){ 
                     //on crée une session
                     $session = new Session();
+                    $session->set('nom', $compta[0]->getNom());
+                    $session->set('prenom', $compta[0]->getPrenom());  
                     $login = $session->set('login', $login);  
-                    return $this->redirectToRoute('afficherFicheFrais');            
-                }    
+                    return $this->render('Menu.html.twig',array('form'=>$form->createView(),));           
+                }
+            }
+            
         }
-        return $this->render('comptable/Connexion.html.twig',array('form'=>$form->createView(),));
-    }     
+        return $this->render('comptable/ConnexionC.html.twig',array('form'=>$form->createView(),));
+    }
 }

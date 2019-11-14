@@ -4,6 +4,14 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use App\Entity\Visiteur;
+use App\Entity\FicheFrais;
+use App\Controller\FicheFraisController;
+use App\Form\VisiteurType;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class VisiteurController extends AbstractController // extends \Doctrine\ORM\EntityRepository
 
@@ -17,19 +25,34 @@ class VisiteurController extends AbstractController // extends \Doctrine\ORM\Ent
             'controller_name' => 'VisiteurController',
         ]);
     }
-    public function SeConnecter($login, $password) {
-            $queryBuilder = $this->_em->createQueryBuilder()
-            ->select('v')
-            ->from($this->_entityName, 'v')
-            ->where('v.login = :login')
-            ->andWhere('v.password = :mdp')
-            ->setParameter('login',$login)
-            ->setParameter('mdp', $password);
 
-           $result =  $queryBuilder->getQuery()->getResult();
+    /**
+     * @Route("/visiteur/seConnecter", name="visiteur_connect")
+     */
+    
+    public function connectionVisiteur(Request $query)
+    {
+        $visiteur = new Visiteur;
+        $form = $this->createForm(VisiteurType::class, $visiteur);
+        $form->handleRequest($query);
+    if ($form->isSubmitted() && $form->isValid()) {
+       
+            $em = $this->getDoctrine()->getManager();
+            $data = $form->getData();      
+           
+            $login = $form['login']->getData();
+            $password = $form['mdp']->getData();
+           
+            $result = $em->getRepository(Visiteur::class)->seConnecter($login,$password); //on envoie les données reçus pour tester
 
-        return $result;
+            if(!empty($result)){ 
+                $session = new Session();
+                $login = $session->set('login', $login);
+                
+                return $this->redirectToRoute('/fiche/frais/afficher');            
+            }    
     }
-
+    return $this->render('visiteur/ConnexionV.html.twig',array('form'=>$form->createView(),));
+}
 
 }

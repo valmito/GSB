@@ -47,13 +47,18 @@ class FicheFraisRepository extends ServiceEntityRepository
         ;
     }
     */
+    
     public function findAllFicheFrais(): ?FicheFrais
     {
+        /*
         $queryBuilder =$this->createQueryBuilder('fi')
             ->select('fi')
             ->from($this->_entityName,'fi');
         
-        $result =  $queryBuilder->getQuery()->getResult();
-        return $result;
+        $query = $this->_em->createQuery('SELECT * FROM App\Entity\FicheFrais JOIN c.address');
+        $result =  $query->getQuery()->getResult();
+        return $result;*/
+        $query = $this->_em->createQuery('SELECT * FROM App\Entity\FicheFrais');
+        return $query->getResult();
     }
 }

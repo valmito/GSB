@@ -8,8 +8,11 @@ and open the template in the editor.
     Author     : etudiant
 */
 body{
-    background-color:appworkspace;
+    background-color:#77AADD;;
 }
-table{
+td{
+    border:1px solid black;
+}
+th{
     border:1px solid black;
 }

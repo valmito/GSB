@@ -10,15 +10,15 @@
 
 use GSB_Frais;
 
-INSERT INTO `Etat` (`id`, `libelle`) VALUES
+INSERT INTO `etat` (`id`, `libelle`) VALUES
 ('RB', 'Remboursée'),
 ('CL', 'Saisie clôturée'),
 ('CR', 'Fiche créée, saisie en cours'),
 ('VA', 'Validée et mise en paiement');
-Insert into FicheFrais values('1',4,1,7.1,'2019-011-23');
+Insert into fiche_frais values('101','1',4,1,7.1,'2019-011-23');
 
 INSERT INTO `comptable` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `date_embauche`) VALUES
-('1','SANGLIER','valmont','valmito','azerty','1 rue des rues',75012','Paris','2000-09-04'),
+('1','SANGLIER','valmont','valmito','azerty','1 rue des rues','75012','Paris','2000-09-04'),
 ('a131', 'Villechalane', 'Louis', 'lvillachane', 'jux7g', '8 rue des Charmes', '46000', 'Cahors', '2005-12-21'),
 ('a17', 'Andre', 'David', 'dandre', 'oppg5', '1 rue Petit', '46200', 'Lalbenque', '1998-11-23'),
 ('a55', 'Bedos', 'Christian', 'cbedos', 'gmhxd', '1 rue Peranud', '46250', 'Montcuq', '1995-01-12'),
