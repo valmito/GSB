@@ -10,7 +10,11 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Doctrine\ORM\Query\AST\Join;
 use App\Entity\FicheFrais;
 use App\Entity\Comptable;
+use App\Entity\FraisForfait;
+use App\Entity\LigneFraisHorsForfait;
 use App\Form\FicheFraisType;
+use App\Form\FraisForfaitType;
+use App\Form\LigneFraisHorsForfaitType;
 
 class FicheFraisController extends AbstractController{
     /**
@@ -28,21 +32,17 @@ class FicheFraisController extends AbstractController{
     public function creerFiche(Request $query) {
 
         $FicheFrais = new FicheFrais();
-
         $form = $this->createForm(FicheFraisType::class, $FicheFrais);
-
         $form->handleRequest($query);
-          // On fait le lien Requête <-> Formulaire
-          // À partir de maintenant, la variable $article contient les valeurs entrées dans le formulaire
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-          // On vérifie que les valeurs entrées sont correctes (Nous verrons la validation des objets en détail dans le prochain chapitre)
-
-          // On enregistre notre objet $advert dans la base de données, par exemple
-
+        
+        $LigneFraisHorsForfait = new LigneFraisHorsForfait();
+        $form2 = $this->createForm(LigneFraisHorsForfaitType::class, $LigneFraisHorsForfait);
+        $form2->handleRequest($query);
+        
+        if ($form->isSubmitted() && $form->isValid() /*&& $form2->isSubmitted() && $form2->isValid()*/) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($FicheFrais);
+            $em->persist($LigneFraisHorsForfait);
             $em->flush();    
 
             $query->getSession()
@@ -51,7 +51,8 @@ class FicheFraisController extends AbstractController{
 
             return $this->redirectToRoute('creerFicheFrais');
         }
-         return $this->render('fiche_frais/Creer.html.twig',array('form'=>$form->createView()));    
+        $jour=date('Y-m');
+         return $this->render('fiche_frais/Creer.html.twig',array('form'=>$form->createView(),'jour'=>$jour,'form2'=>$form2->createView()));    
     }
     /**
      * @Route("/fiche/frais/valider", name="validerFicheFrais")
@@ -82,7 +83,11 @@ class FicheFraisController extends AbstractController{
 
             return $this->redirectToRoute('validerFicheFrais');
         }
-         return $this->render('fiche_frais/ValiderFrais.html.twig',array('form'=>$form->createView()));    
+        $jour=date('m');
+        $em = $this->getDoctrine()->getManager();
+        $Fiche = $em->getRepository(FicheFrais::class)->findByExampleField($jour);
+        
+        return $this->render('fiche_frais/ValiderFrais.html.twig',array('form'=>$form->createView(),'jour'=>$jour,'Fiche'=>$Fiche));    
     }
     /**
       * @Route("/fiche/frais/afficher", name="afficherFicheFrais")
@@ -91,7 +96,7 @@ class FicheFraisController extends AbstractController{
     public function AfficherFicheFrais(){
         
         $em = $this->getDoctrine()->getManager();
-        $Fiche = $em->getRepository(FicheFrais::class)->findAll();    
+        $Fiche = $em->getRepository(FicheFrais::class)->findAll();
         return $this->render('fiche_frais/Afficher.html.twig',array('Fiche'=>$Fiche));
     }
      
@@ -100,7 +105,7 @@ class FicheFraisController extends AbstractController{
       *@Route("/fiche/frais/update/{id}",name="upd_route")
       *
       */    
-     public function updateAction(Request $request, Session $session, $id){
+    public function updateAction(Request $request, Session $session, $id){
          
         $article = new Article() ;
         $article = $this->getDoctrine()->getManager()->getRepository(Article::class)->getUnArticle($id);

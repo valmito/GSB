@@ -3,48 +3,112 @@
 Renseigner ma fiche de frais
 {% endblock %}
 {% block body %}
+<!--
 <center>
 <div class="well">
-{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 {# Les erreurs générales du formulaire. #}
-{{ form_errors(form) }}
+{ form_errors(form) }}
 <h3><center>Formulaire Ajouter Fiche Frais</center></h3>
 <div class="well">
-{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 {# Les erreurs générales du formulaire. #}
-{{ form_errors(form) }}
+{ form_errors(form) }}
 <div class="form-group">
 {# Génération du label. #}
-{{ form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{ form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 {# Affichage des erreurs pour ce champ précis. #}
-{{ form_errors(form.idComptable) }}
-{{ form_widget(form.idComptable) }}
+{ form_errors(form.idComptable) }}
+{ form_widget(form.idComptable) }}
 <div class="form-group">
 {# Génération du label. #}
-{{ form_label(form.mois, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{ form_label(form.mois, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 {# Affichage des erreurs pour ce champ précis. #}
-{{ form_errors(form.mois) }}
-{{ form_widget(form.mois) }}
+{ form_errors(form.mois) }}
+{ form_widget(form.mois) }}
 <div class="form-group">
 {# Génération du label. #}
+{ form_label(form.nbJustificatifs, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{# Affichage des erreurs pour ce champ précis. #}
+{ form_errors(form.nbJustificatifs) }}
+{ form_widget(form.nbJustificatifs) }}
+<div class="form-group">
+{# Génération du label. #}
+{ form_label(form.montantValide, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{# Affichage des erreurs pour ce champ précis. #}
+{ form_errors(form.montantValide) }}
+{ form_widget(form.montantValide) }}
+<div class="form-group">
+{# Génération du label. #}
+{ form_label(form.dateModif, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{# Affichage des erreurs pour ce champ précis. #}
+{ form_errors(form.dateModif) }}
+{ form_widget(form.dateModif) }}
+-->
+<h3>Saisie</h3>
+PERIODE D'ENGAGEMENT :
+{{ jour }}
+<!--
+<div class="form-group">
+{ form_label(form.mois, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{ form_errors(form.mois) }}
+{ form_widget(form.mois) }}
+</div>
+-->
+<action form='POST'>
+<h3>Frais au forfait</h3>
+<!--
+<div class="form-group">
+{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{ form_errors(form2.montant) }}
+{ form_widget(form2.montant) }}
+</div>
+<div class="form-group">
+{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{ form_errors(form2.montant) }}
+{ form_widget(form2.montant) }}
+</div>
+<div class="form-group">
+{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{ form_errors(form2.montant) }}
+{ form_widget(form2.montant) }}
+</div>
+<div class="form-group">
+{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{ form_errors(form2.montant) }}
+{ form_widget(form2.montant) }}
+</div>
+-->
+Repas midi :<input type='number' name='midi'><br>
+Nuitées :<input type='number' name='nuit'><br>
+Etape :<input type='number' name='etape'><br>
+KM :<input type='number' name='km'><br>
+</action>
+<h3>Hors Forfait</h3>
+<div class="form-group">
+{{ form_label(form2.date, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form2.date) }}
+{{ form_widget(form2.date) }}
+</div>
+<div class="form-group">
+{{ form_label(form2.libelle, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form2.libelle) }}
+{{ form_widget(form2.libelle) }}
+</div>
+<div class="form-group">
+{{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form2.montant) }}
+{{ form_widget(form2.montant) }}
+</div>
+<h3>Hors Classification</h3>
+<div class="form-group">
 {{ form_label(form.nbJustificatifs, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{# Affichage des erreurs pour ce champ précis. #}
 {{ form_errors(form.nbJustificatifs) }}
 {{ form_widget(form.nbJustificatifs) }}
-<div class="form-group">
-{# Génération du label. #}
-{{ form_label(form.montantValide, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{# Affichage des erreurs pour ce champ précis. #}
-{{ form_errors(form.montantValide) }}
-{{ form_widget(form.montantValide) }}
-<div class="form-group">
-{# Génération du label. #}
-{{ form_label(form.dateModif, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{# Affichage des erreurs pour ce champ précis. #}
-{{ form_errors(form.dateModif) }}
-{{ form_widget(form.dateModif) }}
+</div>
+</div>
 
-{# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+<div class="form-group">
     <div class="row">
         <div class="container">
         <label class="col-md-4 control-label"></label>
@@ -55,17 +119,5 @@ Renseigner ma fiche de frais
         </div>
     </div>
 </div>
-{% if app.session.flashBag.has('success') %}
-<div class="alert alert-success">
-{% for msg in app.session.flashBag.get('success') %}
-{{ msg }}
-{% endfor %}
-</div>
-{% endif %}
-
-{{ form_rest(form) }}
-{# Fermeture de la balise <form> du formulaire HTML #}
-{{ form_end(form) }}
-</div>{# empty Twig template #}
 </center>
 {% endblock %}

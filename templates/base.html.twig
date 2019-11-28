@@ -15,7 +15,7 @@
     <body>
 
         <div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="menu">
                 <a class="navbar-brand" href="#">GSB</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,18 +32,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/fiche/frais/creerFiche">Creer une fiche des Frais</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 {{ app.session.get('nom') }}<br>{{ app.session.get('prenom') }}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/fiche/frais/valider">Valider une fiche des Frais</a>
                         </li>
                     </ul>
                 </div>
+                {{ app.session.get('nom') }}<br>{{ app.session.get('prenom') }}
                 <div style="float: right" type="button" class="btn btn-outline-danger" >
                     <a href="ConnexionC.html.twig" >Déconexion</a>
                 </div>

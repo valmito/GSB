@@ -48,7 +48,7 @@ class FicheFrais
     private $idVisiteur;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\etat", inversedBy="ficheFrais")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Etat", inversedBy="ficheFrais")
      */
     private $situation;
 

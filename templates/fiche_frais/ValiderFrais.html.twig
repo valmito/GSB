@@ -10,11 +10,28 @@
     </div>
 </p>
 <p>
-    <div class="form-group">
-        {{  form_label(form.mois, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-        {{  form_errors(form.mois) }}
-        {{  form_widget(form.mois) }}
+   <!-- <div class="form-group">
+        {  form_label(form.mois, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        {  form_errors(form.mois) }}
+        {  form_widget(form.mois) }}
     </div>
+    <nav>
+        <select name="mois">
+            <option value ="1">Janvier</option>
+            <option value ="2">Février</option>
+            <option value ="3">Mars</option>
+            <option value ="4">Avril</option>
+            <option value ="5">Mai</option>
+            <option value ="6">Juin</option>
+            <option value ="7">Juillet</option>
+            <option value ="8">Août</option>
+            <option value ="9">Septembre</option>
+            <option value ="10">Octobre</option>
+            <option value ="11">Novembre</option>
+            <option value ="12">Décembre</option>
+        </ul>
+    </nav>-->
+   Mois : {{ jour }}
 </p>
 <h3>
     Frais au forfait
@@ -163,4 +180,32 @@
     </div>
 </div>
 </div>
+        <div>
+            <h3>Liste des fiches de frais</h3><br/>
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>idcomptable</th>
+                    <th>mois</th>
+                    <th>nombre de justificatifs</th>
+                    <th>montant valide</th>
+                    <th>date de modification</th>
+                    <th>Visiteur</th>
+                    <th>Situation</th>
+                </tr>
+                {% for uneFiche in Fiche %}
+                <tr>
+                    <td>{{ uneFiche.id }}</td>
+                    <td>{{ uneFiche.idComptable.nom }}</td>
+                    <td>{{ uneFiche.mois }}</td>
+                    <td>{{ uneFiche.nbJustificatifs }}</td>
+                    <td>{{ uneFiche.montantValide }}</td>
+                    <td>{{ uneFiche.dateModif.format('Y-m-d H:i:s') }}</td>
+                    <td>{{ uneFiche.idVisiteur.nom }}</td>
+                    <td>{{ uneFiche.situation.libelle }}</td>
+                </tr>
+                {% endfor %}
+            </table><br/>
+           
+        </div>
 {% endblock %}

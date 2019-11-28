@@ -40,6 +40,7 @@ class FicheFraisType extends AbstractType
             ->add('valider',SubmitType::class)
             ->add('annuler',ResetType::class)
         ;
+         
     }
 
     public function configureOptions(OptionsResolver $resolver)

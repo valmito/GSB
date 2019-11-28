@@ -7,8 +7,14 @@ and open the template in the editor.
     Created on : 10 oct. 2019, 16:18:43
     Author     : etudiant
 */
+#comptable{
+    background-color:red;
+}
+#visiteur{
+    background-color: chartreuse;
+}
 body{
-    background-color:#77AADD;;
+    background-color:#77AADD;
 }
 td{
     border:1px solid black;

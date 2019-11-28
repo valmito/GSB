@@ -89,8 +89,8 @@ class __TwigTemplate_6e146693dc91442eb74ab113dd950c543b7cdec5c36942fa9c07a1fd661
         // line 6
         echo "<center>
 <div class=\"well\">
-<a href=\"/comptable/seConnecter\" class=\"btn btn-outline-primary\">COMPTABLE</a>
-<a href=\"/visiteur/seConnecter\" class=\"btn btn-outline-primary\">VISITEUR</a>
+<a href=\"/comptable/seConnecter\" id=\"comptable\" class=\"btn btn-outline-primary\">COMPTABLE</a>
+<a href=\"/visiteur/seConnecter\" id=\"visiteur\" class=\"btn btn-outline-primary\">VISITEUR</a>
 </div>
 </center>
 ";
@@ -126,8 +126,8 @@ Formulaire Ajouter Fiche
 {% block body %}
 <center>
 <div class=\"well\">
-<a href=\"/comptable/seConnecter\" class=\"btn btn-outline-primary\">COMPTABLE</a>
-<a href=\"/visiteur/seConnecter\" class=\"btn btn-outline-primary\">VISITEUR</a>
+<a href=\"/comptable/seConnecter\" id=\"comptable\" class=\"btn btn-outline-primary\">COMPTABLE</a>
+<a href=\"/visiteur/seConnecter\" id=\"visiteur\" class=\"btn btn-outline-primary\">VISITEUR</a>
 </div>
 </center>
 {% endblock %}", "user/Accueil.html.twig", "/var/www/html/GSB_Frais/templates/user/Accueil.html.twig");

@@ -98,9 +98,9 @@ class __TwigTemplate_e193027e9dfd7a661ddff4461f13fe1dc59ccb85ffc7f9455ab967d1ba1
                     <th>nombre de justificatifs</th>
                     <th>montant valide</th>
                     <th>date de modification</th>
+                    <th>Visiteur</th>
+                    <th>Situation</th>
                     <th colspan=\"2\">
-                    <!--<th>Modifier</th>
-                    <th>Supprimer</th>-->
                 </tr>
                 ";
         // line 22
@@ -113,11 +113,14 @@ class __TwigTemplate_e193027e9dfd7a661ddff4461f13fe1dc59ccb85ffc7f9455ab967d1ba1
             // line 24
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "id", [], "any", false, false, false, 24), "html", null, true);
             echo "</td>
-                    <td><!--{ uneFiche.idComptable }}-->String non reconnu</td>
+                    <td>";
+            // line 25
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "idComptable", [], "any", false, false, false, 25), "nom", [], "any", false, false, false, 25), "html", null, true);
+            echo "</td>
                     <td>";
             // line 26
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "mois", [], "any", false, false, false, 26), "html", null, true);
-            echo " €</td>
+            echo "</td>
                     <td>";
             // line 27
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "nbJustificatifs", [], "any", false, false, false, 27), "html", null, true);
@@ -126,7 +129,18 @@ class __TwigTemplate_e193027e9dfd7a661ddff4461f13fe1dc59ccb85ffc7f9455ab967d1ba1
             // line 28
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "montantValide", [], "any", false, false, false, 28), "html", null, true);
             echo "</td>
-                    <td><!--{ uneFiche.dateModif }}-->String non reconnu</td>
+                    <td>";
+            // line 29
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "dateModif", [], "any", false, false, false, 29), "format", [0 => "Y-m-d H:i:s"], "method", false, false, false, 29), "html", null, true);
+            echo "</td>
+                    <td>";
+            // line 30
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "idVisiteur", [], "any", false, false, false, 30), "nom", [], "any", false, false, false, 30), "html", null, true);
+            echo "</td>
+                    <td>";
+            // line 31
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "situation", [], "any", false, false, false, 31), "libelle", [], "any", false, false, false, 31), "html", null, true);
+            echo "</td>
                     <td><a href=\"/fiche/frais/update/{/{ uneFiche.id }}\" class=\"btn btn-outline-primary\">MODIFIER</a></td>
                     <td><a href=\"/fiche/frais/verif/supprimer/{/{ uneFiche.id }}\" class=\"btn btn-outline-danger\">SUPPRIMER</a></td>
                 </tr>
@@ -135,7 +149,7 @@ class __TwigTemplate_e193027e9dfd7a661ddff4461f13fe1dc59ccb85ffc7f9455ab967d1ba1
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['uneFiche'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 34
+        // line 36
         echo "            </table><br/>
            
         </div>
@@ -162,7 +176,7 @@ class __TwigTemplate_e193027e9dfd7a661ddff4461f13fe1dc59ccb85ffc7f9455ab967d1ba1
 
     public function getDebugInfo()
     {
-        return array (  139 => 34,  127 => 28,  123 => 27,  119 => 26,  114 => 24,  111 => 23,  107 => 22,  90 => 7,  80 => 6,  69 => 3,  59 => 2,  36 => 1,);
+        return array (  153 => 36,  142 => 31,  138 => 30,  134 => 29,  130 => 28,  126 => 27,  122 => 26,  118 => 25,  114 => 24,  111 => 23,  107 => 22,  90 => 7,  80 => 6,  69 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -184,18 +198,20 @@ Formulaire de connexion
                     <th>nombre de justificatifs</th>
                     <th>montant valide</th>
                     <th>date de modification</th>
+                    <th>Visiteur</th>
+                    <th>Situation</th>
                     <th colspan=\"2\">
-                    <!--<th>Modifier</th>
-                    <th>Supprimer</th>-->
                 </tr>
                 {% for uneFiche in Fiche %}
                 <tr>
                     <td>{{ uneFiche.id }}</td>
-                    <td><!--{ uneFiche.idComptable }}-->String non reconnu</td>
-                    <td>{{ uneFiche.mois }} €</td>
+                    <td>{{ uneFiche.idComptable.nom }}</td>
+                    <td>{{ uneFiche.mois }}</td>
                     <td>{{ uneFiche.nbJustificatifs }}</td>
                     <td>{{ uneFiche.montantValide }}</td>
-                    <td><!--{ uneFiche.dateModif }}-->String non reconnu</td>
+                    <td>{{ uneFiche.dateModif.format('Y-m-d H:i:s') }}</td>
+                    <td>{{ uneFiche.idVisiteur.nom }}</td>
+                    <td>{{ uneFiche.situation.libelle }}</td>
                     <td><a href=\"/fiche/frais/update/{/{ uneFiche.id }}\" class=\"btn btn-outline-primary\">MODIFIER</a></td>
                     <td><a href=\"/fiche/frais/verif/supprimer/{/{ uneFiche.id }}\" class=\"btn btn-outline-danger\">SUPPRIMER</a></td>
                 </tr>

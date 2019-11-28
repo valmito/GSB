@@ -10,7 +10,7 @@ return $getExpiry ? PHP_INT_MAX : Hydrator::hydrate(
     [
         'stdClass' => [
             'targetEntity' => [
-                'App\\Entity\\etat',
+                'App\\Entity\\Etat',
             ],
             'inversedBy' => [
                 'ficheFrais',
