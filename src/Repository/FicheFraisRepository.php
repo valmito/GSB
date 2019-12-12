@@ -33,17 +33,17 @@ class FicheFraisRepository extends ServiceEntityRepository
         ;
     }
 
-    /*
+    
     public function findOneBySomeField($value): ?FicheFrais
     {
         return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('f.mois= :mois')
+            ->setParameter('mois', $value)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+    
     /*
     public function TrouverFicheFraisDuMois($date)
     {

@@ -49,6 +49,7 @@ class ComptableController extends AbstractController{
             $password = $form['mdp']->getData();
 
             $compta = $em->getRepository(comptable::class)->seConnecter($login,$password); //on envoie les données reçus pour tester
+            
             foreach($compta as $result){
                 if($compta[0]->getLogin()==$login){ 
                     //on crée une session
@@ -56,7 +57,7 @@ class ComptableController extends AbstractController{
                     $session->set('nom', $compta[0]->getNom());
                     $session->set('prenom', $compta[0]->getPrenom());  
                     $login = $session->set('login', $login);  
-                    return $this->render('Menu.html.twig',array('form'=>$form->createView(),));           
+                    return $this->render('Menu.html.twig');           
                 }
             }
             

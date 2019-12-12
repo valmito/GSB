@@ -24,7 +24,7 @@ class LigneFraisHorsForfaitType extends AbstractType
         $builder
             ->add('date',TextType::class)
             ->add('libelle',TextType::class)
-            ->add('quantite',IntegerType::class)
+            ->add('montant',NumberType::class)
         ;
     }
 

@@ -88,7 +88,7 @@ class __TwigTemplate_d63a27b53ccdaf98103d0ead03310a7063e2c4a3f00582ad4bde9e036d9
 
         // line 6
         echo "    <body>
-        Choisissez une option dans le menu s'il vous plaît
+        <b>Choisissez une option dans le menu s'il vous plaît</b>
     </body>
 ";
         
@@ -122,7 +122,7 @@ Bienvenue !
 {% endblock %}
 {% block body %}
     <body>
-        Choisissez une option dans le menu s'il vous plaît
+        <b>Choisissez une option dans le menu s'il vous plaît</b>
     </body>
 {% endblock %}", "Menu.html.twig", "/var/www/html/GSB_Frais/templates/Menu.html.twig");
     }

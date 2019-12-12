@@ -43,16 +43,22 @@ class VisiteurController extends AbstractController // extends \Doctrine\ORM\Ent
             $login = $form['login']->getData();
             $password = $form['mdp']->getData();
            
-            $result = $em->getRepository(Visiteur::class)->seConnecter($login,$password); //on envoie les données reçus pour tester
-
-            if(!empty($result)){ 
-                $session = new Session();
-                $login = $session->set('login', $login);
-                
-                return $this->redirectToRoute('/fiche/frais/afficher');            
-            }    
+            $visiteur = $em->getRepository(Visiteur::class)->seConnecter($login,$password); //on envoie les données reçus pour tester
+            
+            foreach($visiteur as $result){
+                if(!empty($visiteur)){ 
+                    if($visiteur[0]->getLogin()==$login){ 
+                        //on crée une session
+                        $session = new Session();
+                        $session->set('nom', $visiteur[0]->getNom());
+                        $session->set('prenom', $visiteur[0]->getPrenom());  
+                        $login = $session->set('login', $login);  
+                        return $this->render('Menu.html.twig');           
+                    }          
+                }    
+    }
     }
     return $this->render('visiteur/ConnexionV.html.twig',array('form'=>$form->createView(),));
-}
 
+}
 }

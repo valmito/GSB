@@ -101,7 +101,6 @@ class FicheFrais
     public function setMontantValide(string $montantValide): self
     {
         $this->montantValide = $montantValide;
-
         return $this;
     }
 

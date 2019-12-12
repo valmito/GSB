@@ -13,8 +13,9 @@ use App\Entity\Comptable;
 use App\Entity\FraisForfait;
 use App\Entity\LigneFraisHorsForfait;
 use App\Form\FicheFraisType;
-use App\Form\FraisForfaitType;
+use App\Form\ValiderFicheType;
 use App\Form\LigneFraisHorsForfaitType;
+use App\Repository\LigneFraisForfait;
 
 class FicheFraisController extends AbstractController{
     /**
@@ -26,6 +27,7 @@ class FicheFraisController extends AbstractController{
             'controller_name' => 'FicheFraisController',
         ]);
     }
+    
     /**
      * @Route("/fiche/frais/creerFiche", name="creerFicheFrais")
      */
@@ -38,30 +40,44 @@ class FicheFraisController extends AbstractController{
         $LigneFraisHorsForfait = new LigneFraisHorsForfait();
         $form2 = $this->createForm(LigneFraisHorsForfaitType::class, $LigneFraisHorsForfait);
         $form2->handleRequest($query);
-        
-        if ($form->isSubmitted() && $form->isValid() /*&& $form2->isSubmitted() && $form2->isValid()*/) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($FicheFrais);
-            $em->persist($LigneFraisHorsForfait);
-            $em->flush();    
+        if($form->get('valider')->isClicked()){  
+            if ($form->isSubmitted() && $form->isValid()) {
+                $fi = $this->getDoctrine()->getManager();
+                $fi->persist($FicheFrais);
+                $fi->flush();
+                $query->getSession()
+                      ->getFlashBag()
+                      ->add('success','Fiche ajouté avec succès');
+        }
+            if ($form2->isSubmitted() && $form2->isValid()){
+                $lfh = $this->getDoctrine()->getManager();
+                $lfh->persist($LigneFraisHorsForfait );
+                $lfh->flush();
 
-            $query->getSession()
-                  ->getFlashBag()
-                  ->add('success','Fiche ajouté avec succès');
-
-            return $this->redirectToRoute('creerFicheFrais');
+                $query->getSession()
+                      ->getFlashBag()
+                      ->add('success','Fiche ajouté avec succès');
+        }
+            if (isset($_POST["midi"]) && isset($_POST["nuit"]) && isset($_POST["etape"]) && isset($_POST["km"])){
+                $midi=$_POST["midi"];
+                $nuit=$_POST["nuit"];
+                $etape=$_POST["etape"];
+                $km=$_POST["km"];
+                RajouterUneLigne($value,$value2,$value3,$value4);
+            }
+        return $this->redirectToRoute('afficherFicheFrais');
         }
         $jour=date('Y-m');
-         return $this->render('fiche_frais/Creer.html.twig',array('form'=>$form->createView(),'jour'=>$jour,'form2'=>$form2->createView()));    
-    }
+        return $this->render('fiche_frais/Creer.html.twig',array('form'=>$form->createView(),'jour'=>$jour,'form2'=>$form2->createView()));    
+        }
+    
     /**
      * @Route("/fiche/frais/valider", name="validerFicheFrais")
      */
     public function validerFiche(Request $query) {
 
         $FicheFrais = new FicheFrais();
-
-        $form = $this->createForm(FicheFraisType::class, $FicheFrais);
+        $form = $this->createForm(ValiderFicheType::class, $FicheFrais);
 
         $form->handleRequest($query);
           // On fait le lien Requête <-> Formulaire
@@ -83,10 +99,9 @@ class FicheFraisController extends AbstractController{
 
             return $this->redirectToRoute('validerFicheFrais');
         }
-        $jour=date('m');
         $em = $this->getDoctrine()->getManager();
+        $jour=date('m');
         $Fiche = $em->getRepository(FicheFrais::class)->findByExampleField($jour);
-        
         return $this->render('fiche_frais/ValiderFrais.html.twig',array('form'=>$form->createView(),'jour'=>$jour,'Fiche'=>$Fiche));    
     }
     /**
@@ -107,25 +122,24 @@ class FicheFraisController extends AbstractController{
       */    
     public function updateAction(Request $request, Session $session, $id){
          
-        $article = new Article() ;
-        $article = $this->getDoctrine()->getManager()->getRepository(Article::class)->getUnArticle($id);
+        $FicheFrais = new FicheFrais() ;
+        $FicheFrais = $this->getDoctrine()->getManager()->getRepository(FicheFrais::class)->getUneUnArticle($id);
        
         //$id = $session->get('login');
         $request->getSession()->getFlashBag()->add('notice', '');
        
-        $form = $this->createForm(ArticleType::class, $article);
+        $form = $this->createForm(FicheFraisType::class, $FicheFrais);
        
         if($request->isMethod('POST')){
             $form->handleRequest($request);
             if($form->isValid()){
                 $em = $this->getDoctrine()->getManager();
                 $em->flush();
-                $request->getSession()->getFlashBag()->add('success', 'Article modifié avec succès.');
-                return $this->redirectToRoute('upd_route',array('id'=>$id));
+                $request->getSession()->getFlashBag()->add('success', 'Fiche Frais modifié avec succès.');
+                return $this->redirectToRoute('afficherFicheFrais',array('id'=>$id));
             }
         }
-        return $this->render( 'article/update.html.twig', array(
-            'form' =>$form->createView(), 'article'=>$article));
+        return $this->render( 'fiche_frais/Update.html.twig', array('form' =>$form->createView(), 'article'=>$article));
     }
    
     /**
@@ -136,30 +150,19 @@ class FicheFraisController extends AbstractController{
     public function  register(){
         return $this->render("article/register.html.twig");
     }
-
-    /**
-      *
-      *@Route("/fiche/frais/verif/supprimer/{id}",name="verif_del_art")
-      *
-      */
-   
-    public function deleteVerif(Session $session, $id){
-        $article = $this->getDoctrine()->getManager()->getRepository(Article::class)->getUnArticle($id);
-        return $this->render('article/delete.html.twig', array('article'=>$article));
-    }
    
     /**
       *
-      *@Route("/article/supprimer/{id}",name="del_art")
+      *@Route("/fiche/frais/supprimer/{id}",name="del_art")
       *
       */
-    public function deleterArticle(Session $session, $id){
+    public function deleterFicheFrais(Session $session, $id){
 
-        $article = $this->getDoctrine()->getManager()->getRepository(Article::class)->getUnArticle($id);
+        $FicheFrais = $this->getDoctrine()->getManager()->getRepository(FicheFrais::class)->find($id);
         $em = $this->getDoctrine()->getManager();
-        $em->remove($article);
+        $em->remove($FicheFrais);
         $em->flush();
-        return $this->redirectToRoute('affichage_final');
+        return $this->redirectToRoute('afficherFicheFrais');
     }
     /**
       *

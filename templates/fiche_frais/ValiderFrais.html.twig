@@ -3,10 +3,10 @@
 <div id="Validation">
 <h1>Validation des frais par visiteur</h1>
 <p>
-    <div class="form-group">
+    <div class="form-group">{#
         {{  form_label(form.idVisiteur, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
         {{  form_errors(form.idVisiteur) }}
-        {{  form_widget(form.idVisiteur) }}
+        {{  form_widget(form.idVisiteur) }}#}
     </div>
 </p>
 <p>
@@ -44,6 +44,7 @@
         <td>Km</td>
         <td>Situation</td>
     </tr>
+    {% for uneFiche in Fiche %}
     <tr>
         <td>
             <!--
@@ -82,12 +83,13 @@
             -->
         </td>
         <td>
-            <div class="form-group">
-            {{ form_errors(form.situation) }}
-            {{ form_widget(form.situation) }}
+            <div class="form-group">{#
+            {{  form_errors(form.situation) }}
+            {{ form_widget(form.situation) }}#}
             </div>
         </td>
     </tr>
+    {% endfor %}
 </table>
 <h3>
     Hors Forfait
@@ -99,6 +101,7 @@
         <td>Montant</td>
         <td>Situation</td>
     </tr>
+    {% for uneFiche in Fiche %}
     <tr>
         <td>
             <!--
@@ -128,12 +131,13 @@
             -->
         </td>
         <td>
-            <div class="form-group">
+            <div class="form-group">{#
             {{ form_errors(form.situation) }}
-            {{ form_widget(form.situation) }}
+            {{ form_widget(form.situation) }}#}
             </div>
         </td>
     </tr>
+    {% endfor %}
 </table>
 <h3>
     Hors Classification
@@ -144,24 +148,22 @@
         <td>Montant</td>
         <td>Situation</td>
     </tr>
+    {#{% for uneFiche in Fiche %}#}
     <tr>
         <td>
-            <!--
             <div class="form-group">
-            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
+            {{ form_errors(form.nbJustificatifs) }}
+            {{ form_widget(form.nbJustificatifs) }}
+            {#{{ uneFiche.nbJustificatifs }}#}
             </div>
-            -->
+            
         </td>
         <td>
-            <!--
             <div class="form-group">
-            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
+            {{ form_errors(form.montantValide) }}
+            {{ form_widget(form.montantValide) }}
+            {#{{ uneFiche.montantValide }}#}
             </div>
-            -->
         </td>
         <td>
             <div class="form-group">
@@ -170,6 +172,7 @@
             </div>
         </td>
     </tr>
+    {#{% endfor %}#}
 </table>
 <div class="row">
     <div class="container">
@@ -179,6 +182,7 @@
         </div>
     </div>
 </div>
+{#
 </div>
         <div>
             <h3>Liste des fiches de frais</h3><br/>
@@ -208,4 +212,5 @@
             </table><br/>
            
         </div>
+#}
 {% endblock %}

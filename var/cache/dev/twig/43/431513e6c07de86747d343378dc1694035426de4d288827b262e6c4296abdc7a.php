@@ -87,69 +87,63 @@ class __TwigTemplate_e193027e9dfd7a661ddff4461f13fe1dc59ccb85ffc7f9455ab967d1ba1
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
-        echo "    <center>
+        echo "    <h2>Période</h2>
+    Mois/année:<input type=\"month\">
         <div>
-            <h3>Liste des fiches de frais</h3><br/>
+            <h3>Frais au forfait</h3><br/>
             <table>
                 <tr>
-                    <th>id</th>
-                    <th>idcomptable</th>
-                    <th>mois</th>
+                    <td>Repas midi</td>
+                    <td>Nuitée</td>
+                    <td>Etape</td>
+                    <td>Km</td>
+                    <td>Situation</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3>Hors Forfait</h3><br/>
+            <table>
+                <tr>
+                    <td>Date</td>
+                    <td>Libellé</td>
+                    <td>Montant</td>
+                    <td>Situation</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3>Hors Classification</h3><br/>
+            <table>
+                <tr>
+                    
                     <th>nombre de justificatifs</th>
-                    <th>montant valide</th>
-                    <th>date de modification</th>
-                    <th>Visiteur</th>
-                    <th>Situation</th>
-                    <th colspan=\"2\">
+                    <th>montant</th>
                 </tr>
                 ";
-        // line 22
+        // line 40
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["Fiche"]) || array_key_exists("Fiche", $context) ? $context["Fiche"] : (function () { throw new RuntimeError('Variable "Fiche" does not exist.', 22, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["Fiche"]) || array_key_exists("Fiche", $context) ? $context["Fiche"] : (function () { throw new RuntimeError('Variable "Fiche" does not exist.', 40, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["uneFiche"]) {
-            // line 23
+            // line 41
             echo "                <tr>
                     <td>";
-            // line 24
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "id", [], "any", false, false, false, 24), "html", null, true);
+            // line 42
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "nbJustificatifs", [], "any", false, false, false, 42), "html", null, true);
             echo "</td>
                     <td>";
-            // line 25
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "idComptable", [], "any", false, false, false, 25), "nom", [], "any", false, false, false, 25), "html", null, true);
+            // line 43
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "montantValide", [], "any", false, false, false, 43), "html", null, true);
             echo "</td>
-                    <td>";
-            // line 26
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "mois", [], "any", false, false, false, 26), "html", null, true);
-            echo "</td>
-                    <td>";
-            // line 27
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "nbJustificatifs", [], "any", false, false, false, 27), "html", null, true);
-            echo "</td>
-                    <td>";
-            // line 28
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "montantValide", [], "any", false, false, false, 28), "html", null, true);
-            echo "</td>
-                    <td>";
-            // line 29
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "dateModif", [], "any", false, false, false, 29), "format", [0 => "Y-m-d H:i:s"], "method", false, false, false, 29), "html", null, true);
-            echo "</td>
-                    <td>";
-            // line 30
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "idVisiteur", [], "any", false, false, false, 30), "nom", [], "any", false, false, false, 30), "html", null, true);
-            echo "</td>
-                    <td>";
-            // line 31
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["uneFiche"], "situation", [], "any", false, false, false, 31), "libelle", [], "any", false, false, false, 31), "html", null, true);
-            echo "</td>
-                    <td><a href=\"/fiche/frais/update/{/{ uneFiche.id }}\" class=\"btn btn-outline-primary\">MODIFIER</a></td>
-                    <td><a href=\"/fiche/frais/verif/supprimer/{/{ uneFiche.id }}\" class=\"btn btn-outline-danger\">SUPPRIMER</a></td>
-                </tr>
+                    ";
+            // line 48
+            echo "                </tr>
                 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['uneFiche'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 36
+        // line 50
         echo "            </table><br/>
            
         </div>
@@ -176,7 +170,7 @@ class __TwigTemplate_e193027e9dfd7a661ddff4461f13fe1dc59ccb85ffc7f9455ab967d1ba1
 
     public function getDebugInfo()
     {
-        return array (  153 => 36,  142 => 31,  138 => 30,  134 => 29,  130 => 28,  126 => 27,  122 => 26,  118 => 25,  114 => 24,  111 => 23,  107 => 22,  90 => 7,  80 => 6,  69 => 3,  59 => 2,  36 => 1,);
+        return array (  147 => 50,  140 => 48,  136 => 43,  132 => 42,  129 => 41,  125 => 40,  90 => 7,  80 => 6,  69 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -187,33 +181,47 @@ Formulaire de connexion
 {% endblock %}
 
 {% block body %}
-    <center>
+    <h2>Période</h2>
+    Mois/année:<input type=\"month\">
         <div>
-            <h3>Liste des fiches de frais</h3><br/>
+            <h3>Frais au forfait</h3><br/>
             <table>
                 <tr>
-                    <th>id</th>
-                    <th>idcomptable</th>
-                    <th>mois</th>
+                    <td>Repas midi</td>
+                    <td>Nuitée</td>
+                    <td>Etape</td>
+                    <td>Km</td>
+                    <td>Situation</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3>Hors Forfait</h3><br/>
+            <table>
+                <tr>
+                    <td>Date</td>
+                    <td>Libellé</td>
+                    <td>Montant</td>
+                    <td>Situation</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3>Hors Classification</h3><br/>
+            <table>
+                <tr>
+                    
                     <th>nombre de justificatifs</th>
-                    <th>montant valide</th>
-                    <th>date de modification</th>
-                    <th>Visiteur</th>
-                    <th>Situation</th>
-                    <th colspan=\"2\">
+                    <th>montant</th>
                 </tr>
                 {% for uneFiche in Fiche %}
                 <tr>
-                    <td>{{ uneFiche.id }}</td>
-                    <td>{{ uneFiche.idComptable.nom }}</td>
-                    <td>{{ uneFiche.mois }}</td>
                     <td>{{ uneFiche.nbJustificatifs }}</td>
                     <td>{{ uneFiche.montantValide }}</td>
-                    <td>{{ uneFiche.dateModif.format('Y-m-d H:i:s') }}</td>
-                    <td>{{ uneFiche.idVisiteur.nom }}</td>
-                    <td>{{ uneFiche.situation.libelle }}</td>
-                    <td><a href=\"/fiche/frais/update/{/{ uneFiche.id }}\" class=\"btn btn-outline-primary\">MODIFIER</a></td>
-                    <td><a href=\"/fiche/frais/verif/supprimer/{/{ uneFiche.id }}\" class=\"btn btn-outline-danger\">SUPPRIMER</a></td>
+                    {#
+                    <td><a href=\"/fiche/frais/update/{{ uneFiche.id }}\" class=\"btn btn-outline-primary\">MODIFIER</a></td>
+                    <td><a href=\"/fiche/frais/supprimer/{{ uneFiche.id }}\" class=\"btn btn-outline-danger\">SUPPRIMER</a></td>
+                    #}
                 </tr>
                 {% endfor %}
             </table><br/>

@@ -22,10 +22,12 @@ return [
         '/article/update/register' => [[['_route' => 'r_register', '_controller' => 'App\\Controller\\FicheFraisController::register'], null, null, null, false, false, null]],
         '/article/afficher' => [[['_route' => 'affichage_final', '_controller' => 'App\\Controller\\FicheFraisController::indexAction'], null, null, null, false, false, null]],
         '/user' => [[['_route' => 'user', '_controller' => 'App\\Controller\\UserController::index'], null, null, null, false, false, null]],
-        '/Accueil' => [[['_route' => 'Accueil', '_controller' => 'App\\Controller\\UserController::seConnecter'], null, null, null, false, false, null]],
+        '/' => [
+            [['_route' => 'Accueil', '_controller' => 'App\\Controller\\UserController::seConnecter'], null, null, null, false, false, null],
+            [['_route' => 'index', '_controller' => 'App\\Controller\\comptableController::index'], null, null, null, false, false, null],
+        ],
         '/visiteur' => [[['_route' => 'visiteur', '_controller' => 'App\\Controller\\VisiteurController::index'], null, null, null, false, false, null]],
         '/visiteur/seConnecter' => [[['_route' => 'visiteur_connect', '_controller' => 'App\\Controller\\VisiteurController::connectionVisiteur'], null, null, null, false, false, null]],
-        '/' => [[['_route' => 'index', '_controller' => 'App\\Controller\\comptableController::index'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -46,9 +48,8 @@ return [
                 .')'
                 .'|/fiche/frais/(?'
                     .'|update/([^/]++)(*:200)'
-                    .'|verif/supprimer/([^/]++)(*:232)'
+                    .'|supprimer/([^/]++)(*:226)'
                 .')'
-                .'|/article/supprimer/([^/]++)(*:268)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -60,9 +61,8 @@ return [
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         200 => [[['_route' => 'upd_route', '_controller' => 'App\\Controller\\FicheFraisController::updateAction'], ['id'], null, null, false, true, null]],
-        232 => [[['_route' => 'verif_del_art', '_controller' => 'App\\Controller\\FicheFraisController::deleteVerif'], ['id'], null, null, false, true, null]],
-        268 => [
-            [['_route' => 'del_art', '_controller' => 'App\\Controller\\FicheFraisController::deleterArticle'], ['id'], null, null, false, true, null],
+        226 => [
+            [['_route' => 'del_art', '_controller' => 'App\\Controller\\FicheFraisController::deleterFicheFrais'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

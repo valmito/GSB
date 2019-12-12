@@ -4,33 +4,47 @@ Formulaire de connexion
 {% endblock %}
 
 {% block body %}
-    <center>
+    <h2>Période</h2>
+    Mois/année:<input type="month">
         <div>
-            <h3>Liste des fiches de frais</h3><br/>
+            <h3>Frais au forfait</h3><br/>
             <table>
                 <tr>
-                    <th>id</th>
-                    <th>idcomptable</th>
-                    <th>mois</th>
+                    <td>Repas midi</td>
+                    <td>Nuitée</td>
+                    <td>Etape</td>
+                    <td>Km</td>
+                    <td>Situation</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3>Hors Forfait</h3><br/>
+            <table>
+                <tr>
+                    <td>Date</td>
+                    <td>Libellé</td>
+                    <td>Montant</td>
+                    <td>Situation</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3>Hors Classification</h3><br/>
+            <table>
+                <tr>
+                    
                     <th>nombre de justificatifs</th>
-                    <th>montant valide</th>
-                    <th>date de modification</th>
-                    <th>Visiteur</th>
-                    <th>Situation</th>
-                    <th colspan="2">
+                    <th>montant</th>
                 </tr>
                 {% for uneFiche in Fiche %}
                 <tr>
-                    <td>{{ uneFiche.id }}</td>
-                    <td>{{ uneFiche.idComptable.nom }}</td>
-                    <td>{{ uneFiche.mois }}</td>
                     <td>{{ uneFiche.nbJustificatifs }}</td>
                     <td>{{ uneFiche.montantValide }}</td>
-                    <td>{{ uneFiche.dateModif.format('Y-m-d H:i:s') }}</td>
-                    <td>{{ uneFiche.idVisiteur.nom }}</td>
-                    <td>{{ uneFiche.situation.libelle }}</td>
-                    <td><a href="/fiche/frais/update/{/{ uneFiche.id }}" class="btn btn-outline-primary">MODIFIER</a></td>
-                    <td><a href="/fiche/frais/verif/supprimer/{/{ uneFiche.id }}" class="btn btn-outline-danger">SUPPRIMER</a></td>
+                    {#
+                    <td><a href="/fiche/frais/update/{{ uneFiche.id }}" class="btn btn-outline-primary">MODIFIER</a></td>
+                    <td><a href="/fiche/frais/supprimer/{{ uneFiche.id }}" class="btn btn-outline-danger">SUPPRIMER</a></td>
+                    #}
                 </tr>
                 {% endfor %}
             </table><br/>

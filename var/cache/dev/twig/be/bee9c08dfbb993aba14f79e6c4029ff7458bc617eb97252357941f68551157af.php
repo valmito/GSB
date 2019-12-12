@@ -32,7 +32,6 @@ class __TwigTemplate_f78296135b981c5356afd1095b764c7d3d0c10a9a21fc7ab2e897068b8c
             'icon' => [$this, 'block_icon'],
             'menu' => [$this, 'block_menu'],
             'body' => [$this, 'block_body'],
-            'footer' => [$this, 'block_footer'],
         ];
     }
 
@@ -69,9 +68,6 @@ class __TwigTemplate_f78296135b981c5356afd1095b764c7d3d0c10a9a21fc7ab2e897068b8c
         echo "    ";
         $this->displayBlock('body', $context, $blocks);
         // line 50
-        echo "    ";
-        $this->displayBlock('footer', $context, $blocks);
-        // line 55
         echo "</html>";
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -233,29 +229,6 @@ class __TwigTemplate_f78296135b981c5356afd1095b764c7d3d0c10a9a21fc7ab2e897068b8c
 
     }
 
-    // line 50
-    public function block_footer($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
-
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
-
-        // line 51
-        echo "    <footer>
-        <h6>Créer par moi-même</h6>
-    </footer>
-    ";
-        
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
-
-        
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
-
-    }
-
     public function getTemplateName()
     {
         return "base.html.twig";
@@ -263,7 +236,7 @@ class __TwigTemplate_f78296135b981c5356afd1095b764c7d3d0c10a9a21fc7ab2e897068b8c
 
     public function getDebugInfo()
     {
-        return array (  247 => 51,  237 => 50,  227 => 49,  217 => 48,  197 => 40,  170 => 15,  160 => 14,  139 => 12,  127 => 10,  123 => 9,  119 => 8,  114 => 7,  104 => 6,  85 => 5,  75 => 55,  72 => 50,  69 => 48,  67 => 14,  64 => 13,  61 => 12,  59 => 6,  55 => 5,  49 => 1,);
+        return array (  223 => 49,  213 => 48,  193 => 40,  166 => 15,  156 => 14,  135 => 12,  123 => 10,  119 => 9,  115 => 8,  110 => 7,  100 => 6,  81 => 5,  71 => 50,  68 => 48,  66 => 14,  63 => 13,  60 => 12,  58 => 6,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -316,11 +289,6 @@ class __TwigTemplate_f78296135b981c5356afd1095b764c7d3d0c10a9a21fc7ab2e897068b8c
     </body>
     {% endblock %}
     {% block body %}
-    {% endblock %}
-    {% block footer %}
-    <footer>
-        <h6>Créer par moi-même</h6>
-    </footer>
     {% endblock %}
 </html>", "base.html.twig", "/var/www/html/GSB_Frais/templates/base.html.twig");
     }

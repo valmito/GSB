@@ -417,9 +417,6 @@
     <service id="App\Form\FicheFraisType" class="App\Form\FicheFraisType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
-    <service id="App\Form\FraisForfaitType" class="App\Form\FraisForfaitType" autowire="true" autoconfigure="true">
-      <tag name="form.type"/>
-    </service>
     <service id="App\Form\LigneFraisForfaitType" class="App\Form\LigneFraisForfaitType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -427,6 +424,9 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\ValiderFicheType" class="App\Form\ValiderFicheType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\VisiteurType" class="App\Form\VisiteurType" autowire="true" autoconfigure="true">
@@ -798,10 +798,10 @@
       <argument type="collection">
         <argument>App\Form\ComptableType</argument>
         <argument>App\Form\FicheFraisType</argument>
-        <argument>App\Form\FraisForfaitType</argument>
         <argument>App\Form\LigneFraisForfaitType</argument>
         <argument>App\Form\LigneFraisHorsForfaitType</argument>
         <argument>App\Form\UserType</argument>
+        <argument>App\Form\ValiderFicheType</argument>
         <argument>App\Form\VisiteurType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -1068,7 +1068,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.tbhEOH8"/>
+      <argument type="service" id=".service_locator.zY7xxEg"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4580,14 +4580,14 @@
     <service id=".abstract.instanceof.App\Form\ComptableType" class="App\Form\ComptableType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FicheFraisType" class="App\Form\FicheFraisType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\FicheFraisType" class="App\Form\FicheFraisType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FraisForfaitType" class="App\Form\FraisForfaitType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\FraisForfaitType" class="App\Form\FraisForfaitType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LigneFraisForfaitType" class="App\Form\LigneFraisForfaitType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\LigneFraisForfaitType" class="App\Form\LigneFraisForfaitType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LigneFraisHorsForfaitType" class="App\Form\LigneFraisHorsForfaitType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\LigneFraisHorsForfaitType" class="App\Form\LigneFraisHorsForfaitType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserType" class="App\Form\UserType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ValiderFicheType" class="App\Form\ValiderFicheType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ValiderFicheType" class="App\Form\ValiderFicheType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\VisiteurType" class="App\Form\VisiteurType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\VisiteurType" class="App\Form\VisiteurType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ComptableRepository" class="App\Repository\ComptableRepository" autowire="true" abstract="true"/>
@@ -4774,15 +4774,13 @@
         <argument key="session" type="service" id=".errored..service_locator.VpK.6BC.Symfony\Component\HttpFoundation\Session\Session"/>
       </argument>
     </service>
-    <service id=".service_locator.5NDZMIG" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.E0jXuFB" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\FicheFraisController::deleteVerif" type="service" id=".service_locator.VpK.6BC"/>
-        <argument key="App\Controller\FicheFraisController::deleterArticle" type="service" id=".service_locator.VpK.6BC"/>
+        <argument key="App\Controller\FicheFraisController::deleterFicheFrais" type="service" id=".service_locator.VpK.6BC"/>
         <argument key="App\Controller\FicheFraisController::indexAction" type="service" id=".service_locator.VpK.6BC"/>
         <argument key="App\Controller\FicheFraisController::updateAction" type="service" id=".service_locator.VpK.6BC"/>
-        <argument key="App\Controller\FicheFraisController:deleteVerif" type="service" id=".service_locator.VpK.6BC"/>
-        <argument key="App\Controller\FicheFraisController:deleterArticle" type="service" id=".service_locator.VpK.6BC"/>
+        <argument key="App\Controller\FicheFraisController:deleterFicheFrais" type="service" id=".service_locator.VpK.6BC"/>
         <argument key="App\Controller\FicheFraisController:indexAction" type="service" id=".service_locator.VpK.6BC"/>
         <argument key="App\Controller\FicheFraisController:updateAction" type="service" id=".service_locator.VpK.6BC"/>
       </argument>
@@ -4846,15 +4844,15 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.tbhEOH8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.zY7xxEg" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\ComptableType" type="service" id="App\Form\ComptableType"/>
         <argument key="App\Form\FicheFraisType" type="service" id="App\Form\FicheFraisType"/>
-        <argument key="App\Form\FraisForfaitType" type="service" id="App\Form\FraisForfaitType"/>
         <argument key="App\Form\LigneFraisForfaitType" type="service" id="App\Form\LigneFraisForfaitType"/>
         <argument key="App\Form\LigneFraisHorsForfaitType" type="service" id="App\Form\LigneFraisHorsForfaitType"/>
         <argument key="App\Form\UserType" type="service" id="App\Form\UserType"/>
+        <argument key="App\Form\ValiderFicheType" type="service" id="App\Form\ValiderFicheType"/>
         <argument key="App\Form\VisiteurType" type="service" id="App\Form\VisiteurType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
@@ -5194,12 +5192,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.5NDZMIG"/>
+      <argument type="service" id=".service_locator.E0jXuFB"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.5NDZMIG"/>
+      <argument type="service" id=".service_locator.E0jXuFB"/>
     </service>
     <service id=".service_locator.UwRI0uT" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
@@ -5574,7 +5572,7 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.5NDZMIG"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.E0jXuFB"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="validator" alias="debug.validator" public="true"/>
