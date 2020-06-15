@@ -40,41 +40,41 @@ Les erreurs générales du formulaire.
 <h3>Saisie</h3>
 PERIODE D'ENGAGEMENT :
 {{ jour }}
-<!--
+{#
 <div class="form-group">
-{ form_label(form.mois, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form.mois) }}
-{ form_widget(form.mois) }}
+{{ form_label(form.mois, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form.mois) }}
+{{ form_widget(form.mois) }}
 </div>
--->
-<action form='POST'>
+#}
+<form method='POST' action='/fiche/frais/creer'>
 <h3>Frais au forfait</h3>
-<!--
+{#
 <div class="form-group">
-{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form2.montant) }}
-{ form_widget(form2.montant) }}
+{{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form2.montant) }}
+{{ form_widget(form2.montant) }}
 </div>
 <div class="form-group">
-{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form2.montant) }}
-{ form_widget(form2.montant) }}
+{{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form2.montant) }}
+{{ form_widget(form2.montant) }}
 </div>
 <div class="form-group">
-{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form2.montant) }}
-{ form_widget(form2.montant) }}
+{{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form2.montant) }}
+{{ form_widget(form2.montant) }}
 </div>
 <div class="form-group">
-{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form2.montant) }}
-{ form_widget(form2.montant) }}
+{{ form_label(form2.montant, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form2.montant) }}
+{{ form_widget(form2.montant) }}
 </div>
--->
-Repas midi : <input type='number' name='midi' min="0"><br>
-Nuitées :<input type='number' name='nuit'  min="0"><br>
-Etape :<input type='number' name='etape'  min="0"><br>
-KM :<input type='number' name='km'  min="0"><br>
+#}
+Repas midi : <input type='number' name='midi' min="0" value='0'><br>
+Nuitées :<input type='number' name='nuit'  min="0"value='0'><br>
+Etape :<input type='number' name='etape'  min="0" value='0'><br>
+KM :<input type='number' name='km'  min="0" value='0'><br>
 </action>
 <h3>Hors Forfait</h3>
 <div class="form-group">

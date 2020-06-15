@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Etat;
 use App\Entity\FicheFrais;
+use App\Entity\Visiteur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,14 +23,15 @@ class ValiderFicheType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        //$Fiche=findByExampleField($value);
         $builder
             //->add('mois')
             //->add('dateModif')
             //->add('idComptable')
-            //->add('idVisiteur')
-            ->add('nbJustificatifs',NumberType::class,array('required'=>true,'data' => $Fiche['nbJustificatifs']))
-            ->add('montantValide', NumberType::class,array('required'=>true,'data' => $Fiche['montantValide']))
+            ->add('nbJustificatifs',NumberType::class,array('required'=>true))//,'data' => $Fiche['nbJustificatifs']))
+            ->add('montantValide', NumberType::class,array('required'=>true))//,'data' => $Fiche['montantValide']))
             ->add('situation', EntityType::class,array('class'=>Etat::class,'required'=>true,'choice_label'=>'libelle'))
+            ->add('idVisiteur', EntityType::class,array('class'=>Visiteur::class,'required'=>true,'choice_label'=>'nom'))
             ->add('valider',SubmitType::class)
             ->add('annuler',ResetType::class)
         ;

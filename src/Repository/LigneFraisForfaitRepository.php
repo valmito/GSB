@@ -48,6 +48,7 @@ class LigneFraisForfaitRepository extends ServiceEntityRepository
     }
     */
     public function RajouterUneLigne($value,$value2,$value3,$value4){
+        
         $queryBuilder =$this->createQueryBuilder('fi')
             ->insert(_entityName)
             ->value($value,$value2,$value3,$value4);

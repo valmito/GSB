@@ -167,7 +167,7 @@ class __TwigTemplate_f78296135b981c5356afd1095b764c7d3d0c10a9a21fc7ab2e897068b8c
 
         <div>
             <nav class=\"navbar navbar-expand-lg navbar-light bg-light\" id=\"menu\">
-                <a class=\"navbar-brand\" href=\"#\">GSB</a>
+                <img src=\"GSB_Frais/public/img/GSB.jpeg\">
                 <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavDropdown\" aria-controls=\"navbarNavDropdown\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                     <span class=\"navbar-toggler-icon\"></span>
                 </button>
@@ -175,7 +175,7 @@ class __TwigTemplate_f78296135b981c5356afd1095b764c7d3d0c10a9a21fc7ab2e897068b8c
                 <div class=\"collapse navbar-collapse\" id=\"navbarNavDropdown\">
                     <ul class=\"navbar-nav\">
                         <li class=\"nav-item active\">
-                            <a class=\"nav-link\" href=\"#\">Accueil <span class=\"sr-only\">(current)</span></a>
+                            <a class=\"nav-link\" href=\"Menu.html.twig\">Accueil <span class=\"sr-only\">(current)</span></a>
                         </li>
                         <li class=\"nav-item\">
                             <a class=\"nav-link\" href=\"/fiche/frais/afficher\">Fiche des Frais</a>
@@ -259,7 +259,7 @@ class __TwigTemplate_f78296135b981c5356afd1095b764c7d3d0c10a9a21fc7ab2e897068b8c
 
         <div>
             <nav class=\"navbar navbar-expand-lg navbar-light bg-light\" id=\"menu\">
-                <a class=\"navbar-brand\" href=\"#\">GSB</a>
+                <img src=\"GSB_Frais/public/img/GSB.jpeg\">
                 <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavDropdown\" aria-controls=\"navbarNavDropdown\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                     <span class=\"navbar-toggler-icon\"></span>
                 </button>
@@ -267,7 +267,7 @@ class __TwigTemplate_f78296135b981c5356afd1095b764c7d3d0c10a9a21fc7ab2e897068b8c
                 <div class=\"collapse navbar-collapse\" id=\"navbarNavDropdown\">
                     <ul class=\"navbar-nav\">
                         <li class=\"nav-item active\">
-                            <a class=\"nav-link\" href=\"#\">Accueil <span class=\"sr-only\">(current)</span></a>
+                            <a class=\"nav-link\" href=\"Menu.html.twig\">Accueil <span class=\"sr-only\">(current)</span></a>
                         </li>
                         <li class=\"nav-item\">
                             <a class=\"nav-link\" href=\"/fiche/frais/afficher\">Fiche des Frais</a>

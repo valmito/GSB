@@ -2,18 +2,20 @@
 {% block body %}
 <div id="Validation">
 <h1>Validation des frais par visiteur</h1>
+{#
 <p>
-    <div class="form-group">{#
+    <div class="form-group">
         {{  form_label(form.idVisiteur, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
         {{  form_errors(form.idVisiteur) }}
-        {{  form_widget(form.idVisiteur) }}#}
+        {{  form_widget(form.idVisiteur) }}
     </div>
 </p>
+#}
 <p>
-   <!-- <div class="form-group">
-        {  form_label(form.mois, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-        {  form_errors(form.mois) }}
-        {  form_widget(form.mois) }}
+   {#<div class="form-group">
+        {{  form_label(form.mois, "", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        {{  form_errors(form.mois) }}
+        {{  form_widget(form.mois) }}
     </div>
     <nav>
         <select name="mois">
@@ -29,8 +31,11 @@
             <option value ="10">Octobre</option>
             <option value ="11">Novembre</option>
             <option value ="12">Décembre</option>
-        </ul>
-    </nav>-->
+    </nav> #}
+   Visiteur : <div class="form-group">
+            {{ form_errors(form.idVisiteur) }}
+            {{ form_widget(form.idVisiteur) }}
+            </div>
    Mois : {{ jour }}
 </p>
 <h3>
@@ -45,50 +50,58 @@
         <td>Situation</td>
     </tr>
     {% for uneFiche in Fiche %}
+    <action method='POST' action='/fiche/frais/validerFiche'>
     <tr>
         <td>
-            <!--
+            {#
             <div class="form-group">
-            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
+            {{ form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.idComptable) }}
+            {{ form_widget(form.idComptable) }}
             </div>
-            -->
+            #}
+            <input type='number' name='midi' min="0" value='0'>
         </td>
         <td>
-            <!--
+            {#
             <div class="form-group">
-            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
+            {{ form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.idComptable) }}
+            {{ form_widget(form.idComptable) }}
             </div>
-            -->
+            #}
+            <input type='number' name='nuit'  min="0"value='0'>
         </td>
         <td>
-            <!--
+            {#
             <div class="form-group">
-            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
+            {{ form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.idComptable) }}
+            {{ form_widget(form.idComptable) }}
             </div>
-            -->
+            #}
+            <input type='number' name='etape'  min="0" value='0'>
         </td>
         <td>
-            <!--
+            {#
             <div class="form-group">
-            { form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
+            {{ form_label(form.idComptable,"",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.idComptable) }}
+            {{ form_widget(form.idComptable) }}
             </div>
-            -->
+            #}
+            <input type='number' name='km'  min="0" value='0'>
         </td>
         <td>
-            <div class="form-group">{#
-            {{  form_errors(form.situation) }}
-            {{ form_widget(form.situation) }}#}
+            <div class="form-group">
+                {#
+                {{  form_errors(form.situation) }}
+                {{ form_widget(form.situation) }}
+                #}
             </div>
         </td>
     </tr>
+    </action>
     {% endfor %}
 </table>
 <h3>

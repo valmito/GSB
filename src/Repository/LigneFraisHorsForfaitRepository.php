@@ -46,6 +46,5 @@ class LigneFraisHorsForfaitRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
-    
+    */    
 }

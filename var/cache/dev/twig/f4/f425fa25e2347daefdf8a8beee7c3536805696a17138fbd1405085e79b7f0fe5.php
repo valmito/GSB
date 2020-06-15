@@ -94,41 +94,16 @@ PERIODE D'ENGAGEMENT :
         // line 42
         echo twig_escape_filter($this->env, (isset($context["jour"]) || array_key_exists("jour", $context) ? $context["jour"] : (function () { throw new RuntimeError('Variable "jour" does not exist.', 42, $this->source); })()), "html", null, true);
         echo "
-<!--
-<div class=\"form-group\">
-{ form_label(form.mois, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form.mois) }}
-{ form_widget(form.mois) }}
-</div>
--->
-<action form='POST'>
+";
+        // line 50
+        echo "<action form='POST'>
 <h3>Frais au forfait</h3>
-<!--
-<div class=\"form-group\">
-{ form_label(form2.montant, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form2.montant) }}
-{ form_widget(form2.montant) }}
-</div>
-<div class=\"form-group\">
-{ form_label(form2.montant, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form2.montant) }}
-{ form_widget(form2.montant) }}
-</div>
-<div class=\"form-group\">
-{ form_label(form2.montant, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form2.montant) }}
-{ form_widget(form2.montant) }}
-</div>
-<div class=\"form-group\">
-{ form_label(form2.montant, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form2.montant) }}
-{ form_widget(form2.montant) }}
-</div>
--->
-Repas midi : <input type='number' name='midi' min=\"0\"><br>
-Nuitées :<input type='number' name='nuit'  min=\"0\"><br>
-Etape :<input type='number' name='etape'  min=\"0\"><br>
-KM :<input type='number' name='km'  min=\"0\"><br>
+";
+        // line 74
+        echo "Repas midi : <input type='number' name='midi' min=\"0\" value='0'><br>
+Nuitées :<input type='number' name='nuit'  min=\"0\"value='0'><br>
+Etape :<input type='number' name='etape'  min=\"0\" value='0'><br>
+KM :<input type='number' name='km'  min=\"0\" value='0'><br>
 </action>
 <h3>Hors Forfait</h3>
 <div class=\"form-group\">
@@ -244,7 +219,7 @@ KM :<input type='number' name='km'  min=\"0\"><br>
 
     public function getDebugInfo()
     {
-        return array (  220 => 116,  216 => 115,  205 => 107,  201 => 106,  197 => 105,  191 => 102,  187 => 101,  183 => 100,  176 => 96,  172 => 95,  168 => 94,  161 => 90,  157 => 89,  153 => 88,  146 => 84,  142 => 83,  138 => 82,  95 => 42,  90 => 39,  80 => 5,  69 => 3,  59 => 2,  36 => 1,);
+        return array (  195 => 116,  191 => 115,  180 => 107,  176 => 106,  172 => 105,  166 => 102,  162 => 101,  158 => 100,  151 => 96,  147 => 95,  143 => 94,  136 => 90,  132 => 89,  128 => 88,  121 => 84,  117 => 83,  113 => 82,  103 => 74,  99 => 50,  95 => 42,  90 => 39,  80 => 5,  69 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -291,41 +266,41 @@ Les erreurs générales du formulaire.
 <h3>Saisie</h3>
 PERIODE D'ENGAGEMENT :
 {{ jour }}
-<!--
+{#
 <div class=\"form-group\">
-{ form_label(form.mois, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form.mois) }}
-{ form_widget(form.mois) }}
+{{ form_label(form.mois, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form.mois) }}
+{{ form_widget(form.mois) }}
 </div>
--->
+#}
 <action form='POST'>
 <h3>Frais au forfait</h3>
-<!--
+{#
 <div class=\"form-group\">
-{ form_label(form2.montant, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form2.montant) }}
-{ form_widget(form2.montant) }}
+{{ form_label(form2.montant, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form2.montant) }}
+{{ form_widget(form2.montant) }}
 </div>
 <div class=\"form-group\">
-{ form_label(form2.montant, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form2.montant) }}
-{ form_widget(form2.montant) }}
+{{ form_label(form2.montant, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form2.montant) }}
+{{ form_widget(form2.montant) }}
 </div>
 <div class=\"form-group\">
-{ form_label(form2.montant, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form2.montant) }}
-{ form_widget(form2.montant) }}
+{{ form_label(form2.montant, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form2.montant) }}
+{{ form_widget(form2.montant) }}
 </div>
 <div class=\"form-group\">
-{ form_label(form2.montant, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-{ form_errors(form2.montant) }}
-{ form_widget(form2.montant) }}
+{{ form_label(form2.montant, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+{{ form_errors(form2.montant) }}
+{{ form_widget(form2.montant) }}
 </div>
--->
-Repas midi : <input type='number' name='midi' min=\"0\"><br>
-Nuitées :<input type='number' name='nuit'  min=\"0\"><br>
-Etape :<input type='number' name='etape'  min=\"0\"><br>
-KM :<input type='number' name='km'  min=\"0\"><br>
+#}
+Repas midi : <input type='number' name='midi' min=\"0\" value='0'><br>
+Nuitées :<input type='number' name='nuit'  min=\"0\"value='0'><br>
+Etape :<input type='number' name='etape'  min=\"0\" value='0'><br>
+KM :<input type='number' name='km'  min=\"0\" value='0'><br>
 </action>
 <h3>Hors Forfait</h3>
 <div class=\"form-group\">

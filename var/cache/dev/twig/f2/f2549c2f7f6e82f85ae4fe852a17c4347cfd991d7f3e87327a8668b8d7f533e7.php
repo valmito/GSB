@@ -67,36 +67,24 @@ class __TwigTemplate_4a55564425c5274cfa67df82eaacc26d880417511c5eccba0addf18daad
         // line 3
         echo "<div id=\"Validation\">
 <h1>Validation des frais par visiteur</h1>
-<p>
-    <div class=\"form-group\">";
-        // line 10
-        echo "    </div>
-</p>
-<p>
-   <!-- <div class=\"form-group\">
-        {  form_label(form.mois, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-        {  form_errors(form.mois) }}
-        {  form_widget(form.mois) }}
-    </div>
-    <nav>
-        <select name=\"mois\">
-            <option value =\"1\">Janvier</option>
-            <option value =\"2\">Février</option>
-            <option value =\"3\">Mars</option>
-            <option value =\"4\">Avril</option>
-            <option value =\"5\">Mai</option>
-            <option value =\"6\">Juin</option>
-            <option value =\"7\">Juillet</option>
-            <option value =\"8\">Août</option>
-            <option value =\"9\">Septembre</option>
-            <option value =\"10\">Octobre</option>
-            <option value =\"11\">Novembre</option>
-            <option value =\"12\">Décembre</option>
-        </ul>
-    </nav>-->
+";
+        // line 14
+        echo "<p>
+   ";
+        // line 35
+        echo "   Visiteur : <div class=\"form-group\">
+            ";
+        // line 36
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 36, $this->source); })()), "idVisiteur", [], "any", false, false, false, 36), 'errors');
+        echo "
+            ";
+        // line 37
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 37, $this->source); })()), "idVisiteur", [], "any", false, false, false, 37), 'widget');
+        echo "
+            </div>
    Mois : ";
-        // line 34
-        echo twig_escape_filter($this->env, (isset($context["jour"]) || array_key_exists("jour", $context) ? $context["jour"] : (function () { throw new RuntimeError('Variable "jour" does not exist.', 34, $this->source); })()), "html", null, true);
+        // line 39
+        echo twig_escape_filter($this->env, (isset($context["jour"]) || array_key_exists("jour", $context) ? $context["jour"] : (function () { throw new RuntimeError('Variable "jour" does not exist.', 39, $this->source); })()), "html", null, true);
         echo "
 </p>
 <h3>
@@ -111,60 +99,47 @@ class __TwigTemplate_4a55564425c5274cfa67df82eaacc26d880417511c5eccba0addf18daad
         <td>Situation</td>
     </tr>
     ";
-        // line 47
+        // line 52
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["Fiche"]) || array_key_exists("Fiche", $context) ? $context["Fiche"] : (function () { throw new RuntimeError('Variable "Fiche" does not exist.', 47, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["Fiche"]) || array_key_exists("Fiche", $context) ? $context["Fiche"] : (function () { throw new RuntimeError('Variable "Fiche" does not exist.', 52, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["uneFiche"]) {
-            // line 48
-            echo "    <tr>
+            // line 53
+            echo "    <action method='POST' action='/fiche/frais/validerFiche'>
+    <tr>
         <td>
-            <!--
-            <div class=\"form-group\">
-            { form_label(form.idComptable,\"\",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
-            </div>
-            -->
+            ";
+            // line 63
+            echo "            <input type='number' name='midi' min=\"0\" value='0'>
         </td>
         <td>
-            <!--
-            <div class=\"form-group\">
-            { form_label(form.idComptable,\"\",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
-            </div>
-            -->
+            ";
+            // line 73
+            echo "            <input type='number' name='nuit'  min=\"0\"value='0'>
         </td>
         <td>
-            <!--
-            <div class=\"form-group\">
-            { form_label(form.idComptable,\"\",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
-            </div>
-            -->
+            ";
+            // line 83
+            echo "            <input type='number' name='etape'  min=\"0\" value='0'>
         </td>
         <td>
-            <!--
-            <div class=\"form-group\">
-            { form_label(form.idComptable,\"\",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
-            </div>
-            -->
+            ";
+            // line 93
+            echo "            <input type='number' name='km'  min=\"0\" value='0'>
         </td>
         <td>
-            <div class=\"form-group\">";
-            // line 89
+            <div class=\"form-group\">
+                ";
+            // line 101
             echo "            </div>
         </td>
     </tr>
+    </action>
     ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['uneFiche'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 93
+        // line 106
         echo "</table>
 <h3>
     Hors Forfait
@@ -177,11 +152,11 @@ class __TwigTemplate_4a55564425c5274cfa67df82eaacc26d880417511c5eccba0addf18daad
         <td>Situation</td>
     </tr>
     ";
-        // line 104
+        // line 117
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["Fiche"]) || array_key_exists("Fiche", $context) ? $context["Fiche"] : (function () { throw new RuntimeError('Variable "Fiche" does not exist.', 104, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["Fiche"]) || array_key_exists("Fiche", $context) ? $context["Fiche"] : (function () { throw new RuntimeError('Variable "Fiche" does not exist.', 117, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["uneFiche"]) {
-            // line 105
+            // line 118
             echo "    <tr>
         <td>
             <!--
@@ -212,7 +187,7 @@ class __TwigTemplate_4a55564425c5274cfa67df82eaacc26d880417511c5eccba0addf18daad
         </td>
         <td>
             <div class=\"form-group\">";
-            // line 137
+            // line 150
             echo "            </div>
         </td>
     </tr>
@@ -221,7 +196,7 @@ class __TwigTemplate_4a55564425c5274cfa67df82eaacc26d880417511c5eccba0addf18daad
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['uneFiche'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 141
+        // line 154
         echo "</table>
 <h3>
     Hors Classification
@@ -233,63 +208,63 @@ class __TwigTemplate_4a55564425c5274cfa67df82eaacc26d880417511c5eccba0addf18daad
         <td>Situation</td>
     </tr>
     ";
-        // line 152
+        // line 165
         echo "    <tr>
         <td>
             <div class=\"form-group\">
             ";
-        // line 155
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 155, $this->source); })()), "nbJustificatifs", [], "any", false, false, false, 155), 'errors');
+        // line 168
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 168, $this->source); })()), "nbJustificatifs", [], "any", false, false, false, 168), 'errors');
         echo "
             ";
-        // line 156
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 156, $this->source); })()), "nbJustificatifs", [], "any", false, false, false, 156), 'widget');
+        // line 169
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 169, $this->source); })()), "nbJustificatifs", [], "any", false, false, false, 169), 'widget');
         echo "
             ";
-        // line 158
+        // line 171
         echo "            </div>
             
         </td>
         <td>
             <div class=\"form-group\">
             ";
-        // line 163
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 163, $this->source); })()), "montantValide", [], "any", false, false, false, 163), 'errors');
+        // line 176
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 176, $this->source); })()), "montantValide", [], "any", false, false, false, 176), 'errors');
         echo "
             ";
-        // line 164
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 164, $this->source); })()), "montantValide", [], "any", false, false, false, 164), 'widget');
+        // line 177
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 177, $this->source); })()), "montantValide", [], "any", false, false, false, 177), 'widget');
         echo "
             ";
-        // line 166
+        // line 179
         echo "            </div>
         </td>
         <td>
             <div class=\"form-group\">
             ";
-        // line 170
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 170, $this->source); })()), "situation", [], "any", false, false, false, 170), 'errors');
+        // line 183
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 183, $this->source); })()), "situation", [], "any", false, false, false, 183), 'errors');
         echo "
             ";
-        // line 171
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 171, $this->source); })()), "situation", [], "any", false, false, false, 171), 'widget');
+        // line 184
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 184, $this->source); })()), "situation", [], "any", false, false, false, 184), 'widget');
         echo "
             </div>
         </td>
     </tr>
     ";
-        // line 176
+        // line 189
         echo "</table>
 <div class=\"row\">
     <div class=\"container\">
         <div class=\"col-md-4\">
             ";
-        // line 180
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 180, $this->source); })()), "valider", [], "any", false, false, false, 180), 'widget', ["attr" => ["class" => "btn btn-success"]]);
+        // line 193
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 193, $this->source); })()), "valider", [], "any", false, false, false, 193), 'widget', ["attr" => ["class" => "btn btn-success"]]);
         echo "
             ";
-        // line 181
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 181, $this->source); })()), "annuler", [], "any", false, false, false, 181), 'widget', ["attr" => ["class" => "btn btn-success"]]);
+        // line 194
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 194, $this->source); })()), "annuler", [], "any", false, false, false, 194), 'widget', ["attr" => ["class" => "btn btn-success"]]);
         echo "
         </div>
     </div>
@@ -315,7 +290,7 @@ class __TwigTemplate_4a55564425c5274cfa67df82eaacc26d880417511c5eccba0addf18daad
 
     public function getDebugInfo()
     {
-        return array (  292 => 181,  288 => 180,  282 => 176,  275 => 171,  271 => 170,  265 => 166,  261 => 164,  257 => 163,  250 => 158,  246 => 156,  242 => 155,  237 => 152,  225 => 141,  216 => 137,  185 => 105,  181 => 104,  168 => 93,  159 => 89,  119 => 48,  115 => 47,  99 => 34,  73 => 10,  68 => 3,  58 => 2,  35 => 1,);
+        return array (  267 => 194,  263 => 193,  257 => 189,  250 => 184,  246 => 183,  240 => 179,  236 => 177,  232 => 176,  225 => 171,  221 => 169,  217 => 168,  212 => 165,  200 => 154,  191 => 150,  160 => 118,  156 => 117,  143 => 106,  133 => 101,  127 => 93,  122 => 83,  117 => 73,  112 => 63,  107 => 53,  103 => 52,  87 => 39,  82 => 37,  78 => 36,  75 => 35,  72 => 14,  68 => 3,  58 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -324,18 +299,20 @@ class __TwigTemplate_4a55564425c5274cfa67df82eaacc26d880417511c5eccba0addf18daad
 {% block body %}
 <div id=\"Validation\">
 <h1>Validation des frais par visiteur</h1>
+{#
 <p>
-    <div class=\"form-group\">{#
+    <div class=\"form-group\">
         {{  form_label(form.idVisiteur, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
         {{  form_errors(form.idVisiteur) }}
-        {{  form_widget(form.idVisiteur) }}#}
+        {{  form_widget(form.idVisiteur) }}
     </div>
 </p>
+#}
 <p>
-   <!-- <div class=\"form-group\">
-        {  form_label(form.mois, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-        {  form_errors(form.mois) }}
-        {  form_widget(form.mois) }}
+   {#<div class=\"form-group\">
+        {{  form_label(form.mois, \"\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        {{  form_errors(form.mois) }}
+        {{  form_widget(form.mois) }}
     </div>
     <nav>
         <select name=\"mois\">
@@ -351,8 +328,11 @@ class __TwigTemplate_4a55564425c5274cfa67df82eaacc26d880417511c5eccba0addf18daad
             <option value =\"10\">Octobre</option>
             <option value =\"11\">Novembre</option>
             <option value =\"12\">Décembre</option>
-        </ul>
-    </nav>-->
+    </nav> #}
+   Visiteur : <div class=\"form-group\">
+            {{ form_errors(form.idVisiteur) }}
+            {{ form_widget(form.idVisiteur) }}
+            </div>
    Mois : {{ jour }}
 </p>
 <h3>
@@ -367,50 +347,58 @@ class __TwigTemplate_4a55564425c5274cfa67df82eaacc26d880417511c5eccba0addf18daad
         <td>Situation</td>
     </tr>
     {% for uneFiche in Fiche %}
+    <action method='POST' action='/fiche/frais/validerFiche'>
     <tr>
         <td>
-            <!--
+            {#
             <div class=\"form-group\">
-            { form_label(form.idComptable,\"\",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
+            {{ form_label(form.idComptable,\"\",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.idComptable) }}
+            {{ form_widget(form.idComptable) }}
             </div>
-            -->
+            #}
+            <input type='number' name='midi' min=\"0\" value='0'>
         </td>
         <td>
-            <!--
+            {#
             <div class=\"form-group\">
-            { form_label(form.idComptable,\"\",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
+            {{ form_label(form.idComptable,\"\",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.idComptable) }}
+            {{ form_widget(form.idComptable) }}
             </div>
-            -->
+            #}
+            <input type='number' name='nuit'  min=\"0\"value='0'>
         </td>
         <td>
-            <!--
+            {#
             <div class=\"form-group\">
-            { form_label(form.idComptable,\"\",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
+            {{ form_label(form.idComptable,\"\",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.idComptable) }}
+            {{ form_widget(form.idComptable) }}
             </div>
-            -->
+            #}
+            <input type='number' name='etape'  min=\"0\" value='0'>
         </td>
         <td>
-            <!--
+            {#
             <div class=\"form-group\">
-            { form_label(form.idComptable,\"\",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            { form_errors(form.idComptable) }}
-            { form_widget(form.idComptable) }}
+            {{ form_label(form.idComptable,\"\",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.idComptable) }}
+            {{ form_widget(form.idComptable) }}
             </div>
-            -->
+            #}
+            <input type='number' name='km'  min=\"0\" value='0'>
         </td>
         <td>
-            <div class=\"form-group\">{#
-            {{  form_errors(form.situation) }}
-            {{ form_widget(form.situation) }}#}
+            <div class=\"form-group\">
+                {#
+                {{  form_errors(form.situation) }}
+                {{ form_widget(form.situation) }}
+                #}
             </div>
         </td>
     </tr>
+    </action>
     {% endfor %}
 </table>
 <h3>
